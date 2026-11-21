@@ -1,5 +1,7 @@
 # PalmhelmKit
 
+English | [中文](README.zh-CN.md)
+
 PalmhelmKit is the Swift package shared by the Palmhelm client apps. It holds the Bridge API client, data models, server-sent-event parsing, endpoint selection and certificate pinning, the shared display rules, and a small set of SwiftUI components. The core does not depend on a UI framework; the `UI/` directory does.
 
 PalmhelmKit is the client side only. The Palmhelm Bridge that it talks to is a separate, proprietary binary and is not part of this repository.
@@ -56,17 +58,3 @@ Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE).
 Copyright 2026 forsakesoul
 
 The Palmhelm name and icons are not licensed under Apache-2.0 and are not covered by this license.
-
----
-
-# PalmhelmKit（中文）
-
-PalmhelmKit 是 Palmhelm 客户端共用的 Swift 包：Bridge API 客户端、数据模型、SSE 解析、端点选择与证书指纹固定、共享的展示规则，以及少量 SwiftUI 组件。核心层不依赖 UI 框架，`UI/` 目录依赖。
-
-本包只是客户端。它所连接的 Palmhelm Bridge 是独立的专有二进制，不在本仓库中。
-
-- 工具链：Swift tools 6.0；iOS 17 与 macOS 14 或更高版本。已在 Swift 6.4.2 上验证。
-- 添加依赖：`.package(url: "https://github.com/forsakesoul/palmhelm-kit.git", exact: "0.0.1")`
-- 测试：`swift test`。TLS 用例需要本机有 node 与 openssl。
-- 协议常量见 `Sources/PalmhelmKit/Constants.swift`。协议文档尚未公开。
-- 许可：Apache-2.0，见 [LICENSE](LICENSE)。Copyright 2026 forsakesoul。Palmhelm 名称与图标不在许可范围内。
