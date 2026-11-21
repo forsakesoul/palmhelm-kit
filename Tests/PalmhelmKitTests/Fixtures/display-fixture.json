@@ -1,0 +1,2430 @@
+[
+ {
+  "name": "native.blocked#a/000",
+  "uuid": "nblocked:fx",
+  "text": "[alpha] agent 正在等待审批或回答问题，请到终端处理（Bridge 不会代答）。",
+  "displayMessage": {
+   "key": "native.blocked",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked#a/010",
+  "uuid": "nblocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] agent 正在等待审批或回答问题，请到终端处理（Bridge 不会代答）。",
+  "displayMessage": {
+   "key": "native.blocked",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_reminder#b/000",
+  "uuid": "nblocked2:fx",
+  "text": "[alpha] agent 等待审批或回答已超过 3 分钟，仍未处理。请到终端处理；若要放弃这条命令，发「重置占用 alpha」。",
+  "displayMessage": {
+   "key": "native.blocked_reminder",
+   "params": {
+    "target": "alpha",
+    "minutes": 3,
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_reminder#b/010",
+  "uuid": "nblocked2:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] agent 等待审批或回答已超过 1000000 分钟，仍未处理。请到终端处理；若要放弃这条命令，发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」。",
+  "displayMessage": {
+   "key": "native.blocked_reminder",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "minutes": 1000000,
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.instance_lost#c/000",
+  "uuid": "unk:fx",
+  "text": "[alpha] 目标实例已结束或被替换，这条命令的结果未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.instance_lost",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.instance_lost#c/010",
+  "uuid": "unk:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 目标实例已结束或被替换，这条命令的结果未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.instance_lost",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.timeout#d/000",
+  "uuid": "unk:fx",
+  "text": "[alpha] 等待执行确认超时，这条命令的状态未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.timeout",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.timeout#d/010",
+  "uuid": "unk:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 等待执行确认超时，这条命令的状态未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.timeout",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.steer_not_merged#e/000",
+  "uuid": "unk:fx",
+  "text": "[alpha] 补充（use:）没有并入当前回合，可能开启了新回合，状态未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.steer_not_merged",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.steer_not_merged#e/010",
+  "uuid": "unk:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 补充（use:）没有并入当前回合，可能开启了新回合，状态未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.steer_not_merged",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.send_error#f/000",
+  "uuid": "unk:fx",
+  "text": "[alpha] 向目标注入时出错，这条命令的状态未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.send_error",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.send_error#f/010",
+  "uuid": "unk:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 向目标注入时出错，这条命令的状态未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.send_error",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.interrupted#g/000",
+  "uuid": "unk:fx",
+  "text": "[alpha] 这一回合被中断（未正常结束），结果未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.interrupted",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.interrupted#g/010",
+  "uuid": "unk:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 这一回合被中断（未正常结束），结果未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.interrupted",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.generic#h/000",
+  "uuid": "unk:fx",
+  "text": "[alpha] 这条命令的状态未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.generic",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.unknown.generic#h/010",
+  "uuid": "unk:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 这条命令的状态未知，已暂停该目标，未自动重发。确认后可发「重置占用 项目名」。",
+  "displayMessage": {
+   "key": "native.unknown.generic",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.released_uncertain#i/000",
+  "uuid": "nunknown:fx",
+  "text": "agent 已回到空闲，但这条输入的结果归属仍未知；已解除占用，后续排队消息可以继续。请到终端核对；本条不会自动重发。",
+  "displayMessage": {
+   "key": "native.released_uncertain"
+  }
+ },
+ {
+  "name": "native.busy.single#j/000",
+  "uuid": "busy:fx",
+  "text": "[alpha] 目标正在忙，消息已排队，空闲后自动发送。",
+  "displayMessage": {
+   "key": "native.busy.single",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.busy.single#j/010",
+  "uuid": "busy:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 目标正在忙，消息已排队，空闲后自动发送。",
+  "displayMessage": {
+   "key": "native.busy.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.busy.single#j/100",
+  "uuid": "busy:fx",
+  "text": "[alpha] 目标正在忙，消息已排队，空闲后自动发送。当前在做：屏幕摘要（屏幕摘要，来源未验证）",
+  "displayMessage": {
+   "key": "native.busy.single",
+   "params": {
+    "target": "alpha",
+    "summary": "屏幕摘要"
+   }
+  }
+ },
+ {
+  "name": "native.busy.single#j/110",
+  "uuid": "busy:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 目标正在忙，消息已排队，空闲后自动发送。当前在做：屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏（屏幕摘要，来源未验证）",
+  "displayMessage": {
+   "key": "native.busy.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "summary": "屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏"
+   }
+  }
+ },
+ {
+  "name": "native.busy.multi#k/000",
+  "uuid": "busy:fx",
+  "text": "[alpha] 目标正在忙，已有 3 条消息排队，空闲后按顺序自动发送。",
+  "displayMessage": {
+   "key": "native.busy.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3
+   }
+  }
+ },
+ {
+  "name": "native.busy.multi#k/010",
+  "uuid": "busy:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 目标正在忙，已有 1000000 条消息排队，空闲后按顺序自动发送。",
+  "displayMessage": {
+   "key": "native.busy.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000
+   }
+  }
+ },
+ {
+  "name": "native.busy.multi#k/100",
+  "uuid": "busy:fx",
+  "text": "[alpha] 目标正在忙，已有 3 条消息排队，空闲后按顺序自动发送。当前在做：屏幕摘要（屏幕摘要，来源未验证）",
+  "displayMessage": {
+   "key": "native.busy.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3,
+    "summary": "屏幕摘要"
+   }
+  }
+ },
+ {
+  "name": "native.busy.multi#k/110",
+  "uuid": "busy:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 目标正在忙，已有 1000000 条消息排队，空闲后按顺序自动发送。当前在做：屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏（屏幕摘要，来源未验证）",
+  "displayMessage": {
+   "key": "native.busy.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000,
+    "summary": "屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏屏"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/000",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 消息已排队但暂不发送：目标被暂停。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "alpha",
+    "reason": "paused"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/010",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 消息已排队但暂不发送：目标被暂停。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "paused"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/100",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 消息已排队但暂不发送：目标被暂停。确认后发「重置占用 alpha」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "alpha",
+    "reason": "paused",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/110",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 消息已排队但暂不发送：目标被暂停。确认后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "paused",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/001",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 消息已排队但暂不发送：送达未知。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "alpha",
+    "reason": "unknown"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/011",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 消息已排队但暂不发送：送达未知。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "unknown"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/101",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 消息已排队但暂不发送：送达未知。确认后发「重置占用 alpha」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "alpha",
+    "reason": "unknown",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/111",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 消息已排队但暂不发送：送达未知。确认后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "unknown",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/002",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 消息已排队但暂不发送：终端已变化。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "alpha",
+    "reason": "terminal_changed"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/012",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 消息已排队但暂不发送：终端已变化。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "terminal_changed"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/102",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 消息已排队但暂不发送：终端已变化。确认后发「重置占用 alpha」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "alpha",
+    "reason": "terminal_changed",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/112",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 消息已排队但暂不发送：终端已变化。确认后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "terminal_changed",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/003",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 消息已排队但暂不发送：有未结束命令。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "alpha",
+    "reason": "open_command"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/013",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 消息已排队但暂不发送：有未结束命令。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "open_command"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/103",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 消息已排队但暂不发送：有未结束命令。确认后发「重置占用 alpha」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "alpha",
+    "reason": "open_command",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/113",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 消息已排队但暂不发送：有未结束命令。确认后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "open_command",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/004",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 消息已排队但暂不发送：目标 agent 不在线。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "alpha",
+    "reason": "offline"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/014",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 消息已排队但暂不发送：目标 agent 不在线。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "offline"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/104",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 消息已排队但暂不发送：目标 agent 不在线。确认后发「重置占用 alpha」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "alpha",
+    "reason": "offline",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.single#l/114",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 消息已排队但暂不发送：目标 agent 不在线。确认后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.single",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "offline",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/000",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 已有 3 条消息排队但暂不发送：目标被暂停。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3,
+    "reason": "paused"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/010",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已有 1000000 条消息排队但暂不发送：目标被暂停。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000,
+    "reason": "paused"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/100",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 已有 3 条消息排队但暂不发送：目标被暂停。确认后发「重置占用 alpha」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3,
+    "reason": "paused",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/110",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已有 1000000 条消息排队但暂不发送：目标被暂停。确认后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000,
+    "reason": "paused",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/001",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 已有 3 条消息排队但暂不发送：送达未知。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3,
+    "reason": "unknown"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/011",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已有 1000000 条消息排队但暂不发送：送达未知。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000,
+    "reason": "unknown"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/101",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 已有 3 条消息排队但暂不发送：送达未知。确认后发「重置占用 alpha」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3,
+    "reason": "unknown",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/111",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已有 1000000 条消息排队但暂不发送：送达未知。确认后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000,
+    "reason": "unknown",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/002",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 已有 3 条消息排队但暂不发送：终端已变化。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3,
+    "reason": "terminal_changed"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/012",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已有 1000000 条消息排队但暂不发送：终端已变化。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000,
+    "reason": "terminal_changed"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/102",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 已有 3 条消息排队但暂不发送：终端已变化。确认后发「重置占用 alpha」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3,
+    "reason": "terminal_changed",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/112",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已有 1000000 条消息排队但暂不发送：终端已变化。确认后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000,
+    "reason": "terminal_changed",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/003",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 已有 3 条消息排队但暂不发送：有未结束命令。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3,
+    "reason": "open_command"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/013",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已有 1000000 条消息排队但暂不发送：有未结束命令。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000,
+    "reason": "open_command"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/103",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 已有 3 条消息排队但暂不发送：有未结束命令。确认后发「重置占用 alpha」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3,
+    "reason": "open_command",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/113",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已有 1000000 条消息排队但暂不发送：有未结束命令。确认后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000,
+    "reason": "open_command",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/004",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 已有 3 条消息排队但暂不发送：目标 agent 不在线。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3,
+    "reason": "offline"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/014",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已有 1000000 条消息排队但暂不发送：目标 agent 不在线。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000,
+    "reason": "offline"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/104",
+  "uuid": "blocked:fx",
+  "text": "[alpha] 已有 3 条消息排队但暂不发送：目标 agent 不在线。确认后发「重置占用 alpha」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "alpha",
+    "count": 3,
+    "reason": "offline",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.blocked_queue.multi#m/114",
+  "uuid": "blocked:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已有 1000000 条消息排队但暂不发送：目标 agent 不在线。确认后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」恢复。",
+  "displayMessage": {
+   "key": "native.blocked_queue.multi",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "count": 1000000,
+    "reason": "offline",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.hold.identity#n/000",
+  "uuid": "ack:fx",
+  "text": "该目标当前记录的执行端不是登记的 agent，已暂停，未派发。请发「切换到 alpha」重新核验。",
+  "displayMessage": {
+   "key": "native.hold.identity",
+   "params": {
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.hold.identity#n/010",
+  "uuid": "ack:fx",
+  "text": "该目标当前记录的执行端不是登记的 agent，已暂停，未派发。请发「切换到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」重新核验。",
+  "displayMessage": {
+   "key": "native.hold.identity",
+   "params": {
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.hold.identity#o/000",
+  "uuid": "ack:fx",
+  "text": "该目标当前记录的执行端不是登记的 agent，已暂停，未派发。请在该目标的页面里重新核验后再发送。",
+  "displayMessage": {
+   "key": "native.hold.identity"
+  }
+ },
+ {
+  "name": "native.hold.terminal#p/000",
+  "uuid": "ack:fx",
+  "text": "该目标对应的 Herdr 终端已变化（被替换或重建），已暂停，未派发。确认后发「重置占用 alpha」。",
+  "displayMessage": {
+   "key": "native.hold.terminal",
+   "params": {
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.hold.terminal#p/010",
+  "uuid": "ack:fx",
+  "text": "该目标对应的 Herdr 终端已变化（被替换或重建），已暂停，未派发。确认后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」。",
+  "displayMessage": {
+   "key": "native.hold.terminal",
+   "params": {
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.hold.terminal#q/000",
+  "uuid": "ack:fx",
+  "text": "该目标对应的 Herdr 终端已变化（被替换或重建），已暂停，未派发。请在该目标的页面里确认后解除占用。",
+  "displayMessage": {
+   "key": "native.hold.terminal"
+  }
+ },
+ {
+  "name": "native.direct_not_sent_changed#r/000",
+  "uuid": "dpause:fx",
+  "text": "[alpha] 直达消息未发送：目标 agent 已变化（重建/替换/改名），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.direct_not_sent_changed",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.direct_not_sent_changed#r/010",
+  "uuid": "dpause:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 直达消息未发送：目标 agent 已变化（重建/替换/改名），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.direct_not_sent_changed",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.input_not_empty#s/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 终端输入框里有未发送的文字（可能是在电脑上输入的），这条消息暂时排队。请到终端清空输入框，清空后会自动发送；Palmhelm 不会替你清空。",
+  "displayMessage": {
+   "key": "native.input_not_empty",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.input_not_empty#s/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 终端输入框里有未发送的文字（可能是在电脑上输入的），这条消息暂时排队。请到终端清空输入框，清空后会自动发送；Palmhelm 不会替你清空。",
+  "displayMessage": {
+   "key": "native.input_not_empty",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.input_unverified#t/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 暂时无法确认终端输入框是否为空，这条消息暂时排队。请查看终端；确认为空后会继续发送。",
+  "displayMessage": {
+   "key": "native.input_unverified",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.input_unverified#t/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 暂时无法确认终端输入框是否为空，这条消息暂时排队。请查看终端；确认为空后会继续发送。",
+  "displayMessage": {
+   "key": "native.input_unverified",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/000",
+  "uuid": "nsteer-paused:fx",
+  "text": "[alpha] 直达插话未发送（目标终端已变化），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "alpha",
+    "reason": "terminal_changed"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/010",
+  "uuid": "nsteer-paused:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 直达插话未发送（目标终端已变化），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "terminal_changed"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/001",
+  "uuid": "nsteer-paused:fx",
+  "text": "[alpha] 直达插话未发送（目标已换代），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "alpha",
+    "reason": "generation_changed"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/011",
+  "uuid": "nsteer-paused:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 直达插话未发送（目标已换代），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "generation_changed"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/002",
+  "uuid": "nsteer-paused:fx",
+  "text": "[alpha] 直达插话未发送（终端身份未知），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "alpha",
+    "reason": "identity_unknown"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/012",
+  "uuid": "nsteer-paused:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 直达插话未发送（终端身份未知），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "identity_unknown"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/003",
+  "uuid": "nsteer-paused:fx",
+  "text": "[alpha] 直达插话未发送（引擎不支持），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "alpha",
+    "reason": "engine_unsupported"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/013",
+  "uuid": "nsteer-paused:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 直达插话未发送（引擎不支持），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "engine_unsupported"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/004",
+  "uuid": "nsteer-paused:fx",
+  "text": "[alpha] 直达插话未发送（目标不是原生模式），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "alpha",
+    "reason": "not_native"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/014",
+  "uuid": "nsteer-paused:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 直达插话未发送（目标不是原生模式），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "not_native"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/005",
+  "uuid": "nsteer-paused:fx",
+  "text": "[alpha] 直达插话未发送（当前回合已结束或已变化），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "alpha",
+    "reason": "turn_changed"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/015",
+  "uuid": "nsteer-paused:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 直达插话未发送（当前回合已结束或已变化），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "turn_changed"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/006",
+  "uuid": "nsteer-paused:fx",
+  "text": "[alpha] 直达插话未发送（来源设备的权限或授权已变化），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "alpha",
+    "reason": "auth_changed"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/016",
+  "uuid": "nsteer-paused:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 直达插话未发送（来源设备的权限或授权已变化），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "auth_changed"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/007",
+  "uuid": "nsteer-paused:fx",
+  "text": "[alpha] 直达插话未发送（目标已被成员占用或配置已变化），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "alpha",
+    "reason": "occupied"
+   }
+  }
+ },
+ {
+  "name": "native.steer.not_sent#u/017",
+  "uuid": "nsteer-paused:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 直达插话未发送（目标已被成员占用或配置已变化），已暂停，不会自动重发。",
+  "displayMessage": {
+   "key": "native.steer.not_sent",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reason": "occupied"
+   }
+  }
+ },
+ {
+  "name": "native.steer.delivered_unverified#v/000",
+  "uuid": "ack:fx",
+  "text": "已送达工作中终端，尚未确认并入本轮。",
+  "displayMessage": {
+   "key": "native.steer.delivered_unverified"
+  }
+ },
+ {
+  "name": "native.steer.unknown#w/000",
+  "uuid": "nsteer-unknown:fx",
+  "text": "[alpha] 直达插话的送达结果未知，已停止该目标后续写入，不会自动重发。发「重置占用 alpha」解除。",
+  "displayMessage": {
+   "key": "native.steer.unknown",
+   "params": {
+    "target": "alpha",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.steer.unknown#w/010",
+  "uuid": "nsteer-unknown:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 直达插话的送达结果未知，已停止该目标后续写入，不会自动重发。发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」解除。",
+  "displayMessage": {
+   "key": "native.steer.unknown",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.steer.hotkey_delivered#x/000",
+  "uuid": "ack:fx",
+  "text": "已送达并提交立即发送快捷键（可能另起一轮，处理未验证）。",
+  "displayMessage": {
+   "key": "native.steer.hotkey_delivered"
+  }
+ },
+ {
+  "name": "native.steer.hotkey_unknown#y/000",
+  "uuid": "nsteer-unknown:fx",
+  "text": "[alpha] 立即发送快捷键的结果未知，已停止该目标后续写入，不会自动重按。发「重置占用 alpha」解除。",
+  "displayMessage": {
+   "key": "native.steer.hotkey_unknown",
+   "params": {
+    "target": "alpha",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "native.steer.hotkey_unknown#y/010",
+  "uuid": "nsteer-unknown:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 立即发送快捷键的结果未知，已停止该目标后续写入，不会自动重按。发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」解除。",
+  "displayMessage": {
+   "key": "native.steer.hotkey_unknown",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "native.steer.text_only#z/000",
+  "uuid": "ack:fx",
+  "text": "文字已送达，未触发立即发送。",
+  "displayMessage": {
+   "key": "native.steer.text_only"
+  }
+ },
+ {
+  "name": "inbox.rejected.target_removed#a/000",
+  "uuid": "ack:fx",
+  "text": "rejected:target_removed\n该目标已从配置中注销，只保留在途命令收尾，本条消息未发送。",
+  "displayMessage": {
+   "key": "inbox.rejected.target_removed"
+  }
+ },
+ {
+  "name": "inbox.rejected.config_unavailable#b/000",
+  "uuid": "ack:fx",
+  "text": "rejected:config_unavailable\n目标配置暂时读取失败，已暂停受理，本条消息未发送；配置恢复后请重新发送（不会自动重发）。",
+  "displayMessage": {
+   "key": "inbox.rejected.config_unavailable"
+  }
+ },
+ {
+  "name": "inbox.rejected.target_changed#c/000",
+  "uuid": "ack:fx",
+  "text": "rejected:target_changed\n目标登记已变更或移除，本条消息未发送。确认当前目标后，发送「切换到 alpha」重新绑定。切换成功后请重新发送消息；已拒绝的消息不会自动重发。",
+  "displayMessage": {
+   "key": "inbox.rejected.target_changed",
+   "params": {
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "inbox.rejected.target_changed#c/010",
+  "uuid": "ack:fx",
+  "text": "rejected:target_changed\n目标登记已变更或移除，本条消息未发送。确认当前目标后，发送「切换到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」重新绑定。切换成功后请重新发送消息；已拒绝的消息不会自动重发。",
+  "displayMessage": {
+   "key": "inbox.rejected.target_changed",
+   "params": {
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "inbox.rejected.target_changed#d/000",
+  "uuid": "ack:fx",
+  "text": "rejected:target_changed\n目标登记已变更或移除，本条消息未发送。请确认可用的目标或 Herdr agent 名，发送「切换到 目标名」重新绑定（群聊仍限允许的目标）。切换成功后请重新发送消息；已拒绝的消息不会自动重发。",
+  "displayMessage": {
+   "key": "inbox.rejected.target_changed"
+  }
+ },
+ {
+  "name": "inbox.rejected.member_queue_full#e/000",
+  "uuid": "ack:fx",
+  "text": "rejected:member_queue_full\n成员问答正在排队（上限 20 条），这条没有受理，请稍后再问。",
+  "displayMessage": {
+   "key": "inbox.rejected.member_queue_full"
+  }
+ },
+ {
+  "name": "inbox.withdrawn#f/000",
+  "uuid": "ack:fx",
+  "text": "已撤回，未发出。",
+  "displayMessage": {
+   "key": "inbox.withdrawn"
+  }
+ },
+ {
+  "name": "inbox.switch.not_verified#g/000",
+  "uuid": "ack:fx",
+  "text": "rejected:target_not_verified（Herdr 暂不可用，未能核验目标）",
+  "displayMessage": {
+   "key": "inbox.switch.not_verified",
+   "params": {
+    "reason": "herdr_unavailable"
+   }
+  }
+ },
+ {
+  "name": "inbox.switch.not_verified#g/001",
+  "uuid": "ack:fx",
+  "text": "rejected:target_not_verified（未找到在线的目标 agent）",
+  "displayMessage": {
+   "key": "inbox.switch.not_verified",
+   "params": {
+    "reason": "no_match"
+   }
+  }
+ },
+ {
+  "name": "inbox.switch.not_verified#g/002",
+  "uuid": "ack:fx",
+  "text": "rejected:target_not_verified（目标匹配到多个 agent。请在目标配置指定 agentName，或切换到已明确登记的 agent 名）",
+  "displayMessage": {
+   "key": "inbox.switch.not_verified",
+   "params": {
+    "reason": "multi_match"
+   }
+  }
+ },
+ {
+  "name": "inbox.switch.not_verified#g/003",
+  "uuid": "ack:fx",
+  "text": "rejected:target_not_verified（目标登记已变化，请重试）",
+  "displayMessage": {
+   "key": "inbox.switch.not_verified",
+   "params": {
+    "reason": "drift"
+   }
+  }
+ },
+ {
+  "name": "inbox.switch.not_verified#g/004",
+  "uuid": "ack:fx",
+  "text": "rejected:target_not_verified（目标 agent 当前不在登记目录内）",
+  "displayMessage": {
+   "key": "inbox.switch.not_verified",
+   "params": {
+    "reason": "out_of_root"
+   }
+  }
+ },
+ {
+  "name": "inbox.switch.target_is_member#h/000",
+  "uuid": "ack:fx",
+  "text": "rejected:target_is_member_target（该目标正用作成员问答目标，不能作为 owner 写入目标）",
+  "displayMessage": {
+   "key": "inbox.switch.target_is_member"
+  }
+ },
+ {
+  "name": "inbox.switch.identity_conflict#i/000",
+  "uuid": "ack:fx",
+  "text": "rejected:target_identity_conflict（该 agent 与另一已登记目标是同一终端。请按原项目名或 targetId 切换，或在终端恢复原 agent 名后再切换）",
+  "displayMessage": {
+   "key": "inbox.switch.identity_conflict"
+  }
+ },
+ {
+  "name": "inbox.switch.recovery_busy#j/000",
+  "uuid": "ack:fx",
+  "text": "rejected:target_recovery_busy（该目标还有未收尾的在途命令或发送，暂不能重新核验；请先在原会话处理完，或确认后发「重置占用 项目名」）",
+  "displayMessage": {
+   "key": "inbox.switch.recovery_busy"
+  }
+ },
+ {
+  "name": "inbox.switch.identity_changed#k/000",
+  "uuid": "ack:fx",
+  "text": "rejected:target_identity_changed（该目标对应的 agent 已重建或换了会话，已暂停该目标。确认无误后发「重置占用 alpha」，再重新切换）",
+  "displayMessage": {
+   "key": "inbox.switch.identity_changed",
+   "params": {
+    "label": "alpha"
+   }
+  }
+ },
+ {
+  "name": "inbox.switch.identity_changed#k/010",
+  "uuid": "ack:fx",
+  "text": "rejected:target_identity_changed（该目标对应的 agent 已重建或换了会话，已暂停该目标。确认无误后发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」，再重新切换）",
+  "displayMessage": {
+   "key": "inbox.switch.identity_changed",
+   "params": {
+    "label": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "inbox.switch.held#l/000",
+  "uuid": "ack:fx",
+  "text": "rejected:target_held（该目标已暂停，未切换；处理完在途命令或发「重置占用 alpha」后再切换）",
+  "displayMessage": {
+   "key": "inbox.switch.held",
+   "params": {
+    "label": "alpha"
+   }
+  }
+ },
+ {
+  "name": "inbox.switch.held#l/010",
+  "uuid": "ack:fx",
+  "text": "rejected:target_held（该目标已暂停，未切换；处理完在途命令或发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」后再切换）",
+  "displayMessage": {
+   "key": "inbox.switch.held",
+   "params": {
+    "label": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "queue.retire.target_gone#m/000",
+  "uuid": "ack:fx",
+  "text": "rejected:target_gone（目标已注销，这条排队的命令未执行）",
+  "displayMessage": {
+   "key": "queue.retire.target_gone"
+  }
+ },
+ {
+  "name": "queue.retire.identity_changed#n/000",
+  "uuid": "ack:fx",
+  "text": "rejected:identity_changed（目标已换代，这条排队的命令未执行）",
+  "displayMessage": {
+   "key": "queue.retire.identity_changed"
+  }
+ },
+ {
+  "name": "queue.expire.no_running_turn#o/000",
+  "uuid": "steerx:fx",
+  "text": "这条补充没有对应的运行中回合，未发出。",
+  "displayMessage": {
+   "key": "queue.expire.no_running_turn"
+  }
+ },
+ {
+  "name": "queue.expire.turn_invalid#p/000",
+  "uuid": "steerx:fx",
+  "text": "对应回合已失效，停止后续排队；之前的结果待确认。",
+  "displayMessage": {
+   "key": "queue.expire.turn_invalid"
+  }
+ },
+ {
+  "name": "queue.expire.expired#q/000",
+  "uuid": "ack:fx",
+  "text": "已过期，未发出。需要时请重新发送。",
+  "displayMessage": {
+   "key": "queue.expire.expired"
+  }
+ },
+ {
+  "name": "queue.expire.deadline#r/000",
+  "uuid": "ack:fx",
+  "text": "排队期限已到，停止后续排队；之前的结果待确认。",
+  "displayMessage": {
+   "key": "queue.expire.deadline"
+  }
+ },
+ {
+  "name": "reset.rejected.reset_stale#s/000",
+  "uuid": "ack:fx",
+  "text": "rejected:reset_stale（提醒已过期，目标当前状态已变化，未重置）",
+  "displayMessage": {
+   "key": "reset.rejected.reset_stale"
+  }
+ },
+ {
+  "name": "reset.rejected.reset_target_ambiguous#t/000",
+  "uuid": "ack:fx",
+  "text": "rejected:reset_target_ambiguous（有多个目标使用这个名称，未做任何改动。请用目标 id 重置）",
+  "displayMessage": {
+   "key": "reset.rejected.reset_target_ambiguous"
+  }
+ },
+ {
+  "name": "reset.rejected.reset_spool_unsupported#u/000",
+  "uuid": "ack:fx",
+  "text": "rejected:reset_spool_unsupported（spool 目标的重置尚未移植，未做任何改动）",
+  "displayMessage": {
+   "key": "reset.rejected.reset_spool_unsupported"
+  }
+ },
+ {
+  "name": "reset.rejected.rebuild_stale#v/000",
+  "uuid": "ack:fx",
+  "text": "rejected:rebuild_stale（等待期间目标状态已变化，未重建）",
+  "displayMessage": {
+   "key": "reset.rejected.rebuild_stale"
+  }
+ },
+ {
+  "name": "reset.rejected.rebuild_spool_unsupported#w/000",
+  "uuid": "ack:fx",
+  "text": "rejected:rebuild_spool_unsupported（spool 目标的重建尚未移植，未做任何改动）",
+  "displayMessage": {
+   "key": "reset.rejected.rebuild_spool_unsupported"
+  }
+ },
+ {
+  "name": "identity.recovered#x/000",
+  "uuid": "ack:fx",
+  "text": "已确认是同一个会话：alpha 恢复接收，之后的消息按当前会话发送。",
+  "displayMessage": {
+   "key": "identity.recovered",
+   "params": {
+    "agent": "alpha"
+   }
+  }
+ },
+ {
+  "name": "identity.recovered#x/010",
+  "uuid": "ack:fx",
+  "text": "已确认是同一个会话：aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 恢复接收，之后的消息按当前会话发送。",
+  "displayMessage": {
+   "key": "identity.recovered",
+   "params": {
+    "agent": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "owner.rejected.direct_private_only#y/000",
+  "uuid": "ack:fx",
+  "text": "rejected:direct_private_only（派给仅限私聊）",
+  "displayMessage": {
+   "key": "owner.rejected.direct_private_only"
+  }
+ },
+ {
+  "name": "owner.rejected.direct_invalid#z/000",
+  "uuid": "ack:fx",
+  "text": "rejected:direct_invalid（正确格式：派给 \u003cagent名\u003e：内容）",
+  "displayMessage": {
+   "key": "owner.rejected.direct_invalid"
+  }
+ },
+ {
+  "name": "owner.rejected.direct_owner_only#a/000",
+  "uuid": "ack:fx",
+  "text": "rejected:direct_owner_only（只能直接派给 Owner；Worker/Advisor 由 Owner 交接）",
+  "displayMessage": {
+   "key": "owner.rejected.direct_owner_only"
+  }
+ },
+ {
+  "name": "owner.rejected.dispatch_disabled#b/000",
+  "uuid": "ack:fx",
+  "text": "rejected:dispatch_disabled（派发未开启）",
+  "displayMessage": {
+   "key": "owner.rejected.dispatch_disabled"
+  }
+ },
+ {
+  "name": "owner.rejected.direct_target_ambiguous#c/000",
+  "uuid": "ack:fx",
+  "text": "rejected:direct_target_ambiguous（目标名称不明确，请先用「切换到」确认）",
+  "displayMessage": {
+   "key": "owner.rejected.direct_target_ambiguous"
+  }
+ },
+ {
+  "name": "owner.rejected.direct_hook_unsupported#d/000",
+  "uuid": "ack:fx",
+  "text": "rejected:direct_hook_unsupported（该目标是 hook 模式，暂不支持直达）",
+  "displayMessage": {
+   "key": "owner.rejected.direct_hook_unsupported"
+  }
+ },
+ {
+  "name": "owner.rejected.tasks_private_only#e/000",
+  "uuid": "ack:fx",
+  "text": "rejected:tasks_private_only（任务/查找仅限私聊）",
+  "displayMessage": {
+   "key": "owner.rejected.tasks_private_only"
+  }
+ },
+ {
+  "name": "watch.followed#f/000",
+  "uuid": "ack:fx",
+  "text": "已关注 alpha：下一次采样建立基线（当前状态请发「面板」）",
+  "displayMessage": {
+   "key": "watch.followed",
+   "params": {
+    "prefix": "alpha"
+   }
+  }
+ },
+ {
+  "name": "watch.followed#f/010",
+  "uuid": "ack:fx",
+  "text": "已关注 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa：下一次采样建立基线（当前状态请发「面板」）",
+  "displayMessage": {
+   "key": "watch.followed",
+   "params": {
+    "prefix": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "watch.already#g/000",
+  "uuid": "ack:fx",
+  "text": "已在关注 alpha",
+  "displayMessage": {
+   "key": "watch.already",
+   "params": {
+    "prefix": "alpha"
+   }
+  }
+ },
+ {
+  "name": "watch.already#g/010",
+  "uuid": "ack:fx",
+  "text": "已在关注 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "displayMessage": {
+   "key": "watch.already",
+   "params": {
+    "prefix": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "watch.not_followed#h/000",
+  "uuid": "ack:fx",
+  "text": "未关注 alpha",
+  "displayMessage": {
+   "key": "watch.not_followed",
+   "params": {
+    "prefix": "alpha"
+   }
+  }
+ },
+ {
+  "name": "watch.not_followed#h/010",
+  "uuid": "ack:fx",
+  "text": "未关注 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "displayMessage": {
+   "key": "watch.not_followed",
+   "params": {
+    "prefix": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "watch.unfollowed#i/000",
+  "uuid": "ack:fx",
+  "text": "已取消关注 alpha",
+  "displayMessage": {
+   "key": "watch.unfollowed",
+   "params": {
+    "prefix": "alpha"
+   }
+  }
+ },
+ {
+  "name": "watch.unfollowed#i/010",
+  "uuid": "ack:fx",
+  "text": "已取消关注 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "displayMessage": {
+   "key": "watch.unfollowed",
+   "params": {
+    "prefix": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "watch.list_empty#j/000",
+  "uuid": "ack:fx",
+  "text": "关注列表：（空）",
+  "displayMessage": {
+   "key": "watch.list_empty"
+  }
+ },
+ {
+  "name": "watch.list#k/000",
+  "uuid": "ack:fx",
+  "text": "关注列表：alpha",
+  "displayMessage": {
+   "key": "watch.list",
+   "params": {
+    "names": "alpha"
+   }
+  }
+ },
+ {
+  "name": "watch.list#k/010",
+  "uuid": "ack:fx",
+  "text": "关注列表：aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "displayMessage": {
+   "key": "watch.list",
+   "params": {
+    "names": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "watch.rejected.private_only#l/000",
+  "uuid": "ack:fx",
+  "text": "rejected:watch_private_only（关注仅限私聊）",
+  "displayMessage": {
+   "key": "watch.rejected.private_only"
+  }
+ },
+ {
+  "name": "routing.handoff_reverified#m/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 目标身份已变化，已重新核验并接续到 alpha。",
+  "displayMessage": {
+   "key": "routing.handoff_reverified",
+   "params": {
+    "target": "alpha",
+    "to": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.handoff_reverified#m/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 目标身份已变化，已重新核验并接续到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa。",
+  "displayMessage": {
+   "key": "routing.handoff_reverified",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "to": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "routing.handoff_reverified#n/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 目标身份已变化，已重新核验并接续到 alpha。\n旧会话仍有未发送的消息，已暂停，未自动重发。",
+  "displayMessage": {
+   "key": "routing.handoff_reverified",
+   "params": {
+    "target": "alpha",
+    "to": "alpha",
+    "pausedNote": "1"
+   }
+  }
+ },
+ {
+  "name": "routing.handoff_reverified#n/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 目标身份已变化，已重新核验并接续到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa。\n旧会话仍有未发送的消息，已暂停，未自动重发。",
+  "displayMessage": {
+   "key": "routing.handoff_reverified",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "to": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "pausedNote": "1"
+   }
+  }
+ },
+ {
+  "name": "routing.handoff#o/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 已从 alpha 接续到 alpha。",
+  "displayMessage": {
+   "key": "routing.handoff",
+   "params": {
+    "target": "alpha",
+    "from": "alpha",
+    "to": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.handoff#o/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已从 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 接续到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa。",
+  "displayMessage": {
+   "key": "routing.handoff",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "from": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "to": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "routing.handoff#p/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 已从 alpha 接续到 alpha。\n旧会话仍有未发送的消息，已暂停，未自动重发。",
+  "displayMessage": {
+   "key": "routing.handoff",
+   "params": {
+    "target": "alpha",
+    "from": "alpha",
+    "to": "alpha",
+    "pausedNote": "1"
+   }
+  }
+ },
+ {
+  "name": "routing.handoff#p/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已从 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 接续到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa。\n旧会话仍有未发送的消息，已暂停，未自动重发。",
+  "displayMessage": {
+   "key": "routing.handoff",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "from": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "to": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "pausedNote": "1"
+   }
+  }
+ },
+ {
+  "name": "routing.expired#q/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 接续确认已过期，原消息未执行，请重新发送。",
+  "displayMessage": {
+   "key": "routing.expired",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.expired#q/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 接续确认已过期，原消息未执行，请重新发送。",
+  "displayMessage": {
+   "key": "routing.expired",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "routing.pending#r/000",
+  "uuid": "rpending:fx",
+  "text": "[alpha] 已有一个待确认的接续请求，请先回复「选 N」，这条消息未受理。",
+  "displayMessage": {
+   "key": "routing.pending",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.pending#r/010",
+  "uuid": "rpending:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 已有一个待确认的接续请求，请先回复「选 N」，这条消息未受理。",
+  "displayMessage": {
+   "key": "routing.pending",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "routing.no_route.no_candidate#s/000",
+  "uuid": "rej:fx",
+  "text": "❌ 路由未确认，本条未执行。没有可用的同项目候选进入接续；请在 Herdr 里确认目标 agent 后发送「切换到 \u003c项目名或 agent 名\u003e」。",
+  "displayMessage": {
+   "key": "routing.no_route.no_candidate"
+  }
+ },
+ {
+  "name": "routing.no_route.project_mismatch#t/000",
+  "uuid": "rej:fx",
+  "text": "❌ 路由未确认，本条未执行。该 pane 里的新 agent 不是这个目标登记的 agent（目录或名字不一致），未自动接续，也未受理这条消息；请明确「切换到 …」。",
+  "displayMessage": {
+   "key": "routing.no_route.project_mismatch"
+  }
+ },
+ {
+  "name": "routing.no_route.ambiguous_pane#u/000",
+  "uuid": "rej:fx",
+  "text": "❌ 路由未确认，本条未执行。该 pane 里有多个前台 agent，无法确定接续目标，未受理这条消息；请明确「切换到 …」。",
+  "displayMessage": {
+   "key": "routing.no_route.ambiguous_pane"
+  }
+ },
+ {
+  "name": "routing.no_route.entry_changed#v/000",
+  "uuid": "rej:fx",
+  "text": "❌ 路由未确认，本条未执行。入口刚刚发生变化（另一个会话已抢先接续或本聊天的入口版本已前进），本条未执行，请重新发送。",
+  "displayMessage": {
+   "key": "routing.no_route.entry_changed"
+  }
+ },
+ {
+  "name": "routing.no_route.default#w/000",
+  "uuid": "rej:fx",
+  "text": "❌ 路由未确认，本条未执行。请明确「切换到 …」。",
+  "displayMessage": {
+   "key": "routing.no_route.default"
+  }
+ },
+ {
+  "name": "routing.bad_choice#x/000",
+  "uuid": "rbad:fx",
+  "text": "[alpha] 候选编号无效，请回复「选 1」。",
+  "displayMessage": {
+   "key": "routing.bad_choice",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.bad_choice#x/010",
+  "uuid": "rbad:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 候选编号无效，请回复「选 1」。",
+  "displayMessage": {
+   "key": "routing.bad_choice",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "routing.busy_page#y/000",
+  "uuid": "rbusy:fx",
+  "text": "[alpha] 目标当前有未完成任务或已被冻结，暂不能接续；这条消息未执行。处理完（必要时发「重置占用 alpha」）后可再次回复「选 N」。",
+  "displayMessage": {
+   "key": "routing.busy_page",
+   "params": {
+    "target": "alpha",
+    "name": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.busy_page#y/010",
+  "uuid": "rbusy:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 目标当前有未完成任务或已被冻结，暂不能接续；这条消息未执行。处理完（必要时发「重置占用 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa」）后可再次回复「选 N」。",
+  "displayMessage": {
+   "key": "routing.busy_page",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "routing.device_paused#z/000",
+  "uuid": "rdev:fx",
+  "text": "[alpha] 原消息所属的设备已暂停，这条消息未执行；恢复后可再次回复「选 N」。",
+  "displayMessage": {
+   "key": "routing.device_paused",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.device_paused#z/010",
+  "uuid": "rdev:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 原消息所属的设备已暂停，这条消息未执行；恢复后可再次回复「选 N」。",
+  "displayMessage": {
+   "key": "routing.device_paused",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "routing.owner.candidate_changed#a/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 候选会话已变化，原消息未执行，请重新发送。",
+  "displayMessage": {
+   "key": "routing.owner.candidate_changed",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.owner.candidate_changed#a/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 候选会话已变化，原消息未执行，请重新发送。",
+  "displayMessage": {
+   "key": "routing.owner.candidate_changed",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "routing.owner.request_invalid#b/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 接续请求已失效，原消息未执行，请重新发送。",
+  "displayMessage": {
+   "key": "routing.owner.request_invalid",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.owner.request_invalid#b/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 接续请求已失效，原消息未执行，请重新发送。",
+  "displayMessage": {
+   "key": "routing.owner.request_invalid",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "routing.owner.device_readonly#c/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 原消息所属的设备已降为只读，这条消息未执行；请重新发送。",
+  "displayMessage": {
+   "key": "routing.owner.device_readonly",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.owner.device_readonly#c/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 原消息所属的设备已降为只读，这条消息未执行；请重新发送。",
+  "displayMessage": {
+   "key": "routing.owner.device_readonly",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "routing.owner.device_removed#d/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 原消息所属的设备已移除或不可用，这条消息未执行；请重新发送。",
+  "displayMessage": {
+   "key": "routing.owner.device_removed",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.owner.device_removed#d/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 原消息所属的设备已移除或不可用，这条消息未执行；请重新发送。",
+  "displayMessage": {
+   "key": "routing.owner.device_removed",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "routing.owner.candidate_not_agent#e/000",
+  "uuid": "ack:fx",
+  "text": "[alpha] 候选已不属于这个目标登记的 agent，原消息未执行；请重新发送或明确「切换到 …」。",
+  "displayMessage": {
+   "key": "routing.owner.candidate_not_agent",
+   "params": {
+    "target": "alpha"
+   }
+  }
+ },
+ {
+  "name": "routing.owner.candidate_not_agent#e/010",
+  "uuid": "ack:fx",
+  "text": "[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa] 候选已不属于这个目标登记的 agent，原消息未执行；请重新发送或明确「切换到 …」。",
+  "displayMessage": {
+   "key": "routing.owner.candidate_not_agent",
+   "params": {
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#f/000",
+  "uuid": "ack:fx",
+  "text": "switched:alpha@3",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "alpha",
+    "rev": 3
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#f/010",
+  "uuid": "ack:fx",
+  "text": "switched:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@1000000",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "rev": 1000000
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#g/000",
+  "uuid": "ack:fx",
+  "text": "switched:alpha@3（已切换到 alpha）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "alpha",
+    "rev": 3,
+    "swapped": "alpha"
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#g/010",
+  "uuid": "ack:fx",
+  "text": "switched:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@1000000（已切换到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "rev": 1000000,
+    "swapped": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#h/000",
+  "uuid": "ack:fx",
+  "text": "switched:alpha@3（已切换到 alpha；旧消息已暂停未重发 3 条）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "alpha",
+    "rev": 3,
+    "swapped": "alpha",
+    "swappedPaused": 3
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#h/010",
+  "uuid": "ack:fx",
+  "text": "switched:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@1000000（已切换到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa；旧消息已暂停未重发 1000000 条）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "rev": 1000000,
+    "swapped": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "swappedPaused": 1000000
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#i/000",
+  "uuid": "ack:fx",
+  "text": "switched:alpha@3（已重新核验目标身份）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "alpha",
+    "rev": 3,
+    "reverified": 1
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#i/010",
+  "uuid": "ack:fx",
+  "text": "switched:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@1000000（已重新核验目标身份）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "rev": 1000000,
+    "reverified": 1
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#j/000",
+  "uuid": "ack:fx",
+  "text": "switched:alpha@3（已重新核验目标身份）（已切换到 alpha）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "alpha",
+    "rev": 3,
+    "swapped": "alpha",
+    "reverified": 1
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#j/010",
+  "uuid": "ack:fx",
+  "text": "switched:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@1000000（已重新核验目标身份）（已切换到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "rev": 1000000,
+    "swapped": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reverified": 1
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#k/000",
+  "uuid": "ack:fx",
+  "text": "switched:alpha@3（已重新核验目标身份）（已切换到 alpha；旧消息已暂停未重发 3 条）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "alpha",
+    "rev": 3,
+    "swapped": "alpha",
+    "swappedPaused": 3,
+    "reverified": 1
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#k/010",
+  "uuid": "ack:fx",
+  "text": "switched:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@1000000（已重新核验目标身份）（已切换到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa；旧消息已暂停未重发 1000000 条）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "rev": 1000000,
+    "swapped": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "swappedPaused": 1000000,
+    "reverified": 1
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#l/000",
+  "uuid": "ack:fx",
+  "text": "switched:alpha@3（已重新核验目标身份；旧的未发送消息已暂停，未重发）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "alpha",
+    "rev": 3,
+    "reverified": 1,
+    "reverifiedPaused": 1
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#l/010",
+  "uuid": "ack:fx",
+  "text": "switched:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@1000000（已重新核验目标身份；旧的未发送消息已暂停，未重发）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "rev": 1000000,
+    "reverified": 1,
+    "reverifiedPaused": 1
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#m/000",
+  "uuid": "ack:fx",
+  "text": "switched:alpha@3（已重新核验目标身份；旧的未发送消息已暂停，未重发）（已切换到 alpha）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "alpha",
+    "rev": 3,
+    "swapped": "alpha",
+    "reverified": 1,
+    "reverifiedPaused": 1
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#m/010",
+  "uuid": "ack:fx",
+  "text": "switched:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@1000000（已重新核验目标身份；旧的未发送消息已暂停，未重发）（已切换到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "rev": 1000000,
+    "swapped": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "reverified": 1,
+    "reverifiedPaused": 1
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#n/000",
+  "uuid": "ack:fx",
+  "text": "switched:alpha@3（已重新核验目标身份；旧的未发送消息已暂停，未重发）（已切换到 alpha；旧消息已暂停未重发 3 条）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "alpha",
+    "rev": 3,
+    "swapped": "alpha",
+    "swappedPaused": 3,
+    "reverified": 1,
+    "reverifiedPaused": 1
+   }
+  }
+ },
+ {
+  "name": "inbox.switched#n/010",
+  "uuid": "ack:fx",
+  "text": "switched:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@1000000（已重新核验目标身份；旧的未发送消息已暂停，未重发）（已切换到 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa；旧消息已暂停未重发 1000000 条）",
+  "displayMessage": {
+   "key": "inbox.switched",
+   "params": {
+    "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "rev": 1000000,
+    "swapped": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "swappedPaused": 1000000,
+    "reverified": 1,
+    "reverifiedPaused": 1
+   }
+  }
+ },
+ {
+  "name": "placeholder/unnamed",
+  "uuid": "ack:fx",
+  "text": "[a] 已从 未命名会话 接续到 （名称已隐藏）。",
+  "displayMessage": {
+   "key": "routing.handoff",
+   "params": {
+    "target": "a",
+    "from": {
+     "placeholder": "unnamed"
+    },
+    "to": {
+     "placeholder": "hidden"
+    }
+   }
+  }
+ },
+ {
+  "name": "candidates/2",
+  "uuid": "rsel:fx",
+  "text": "[a] 检测到新会话，请确认接续目标（10 分钟内有效）：\n1. claude / x\n2. codex / （名称已隐藏）\n回复「选 1」。",
+  "displayMessage": {
+   "key": "routing.candidates",
+   "params": {
+    "target": "a",
+    "lines": [
+     {
+      "kind": "claude",
+      "agent": "x"
+     },
+     {
+      "kind": "codex",
+      "agent": {
+       "placeholder": "hidden"
+      }
+     }
+    ]
+   }
+  }
+ },
+ {
+  "name": "candidates/8",
+  "uuid": "rsel:fx",
+  "text": "[a] 检测到新会话，请确认接续目标（10 分钟内有效）：\n1. c / a\n2. c / a\n3. c / a\n4. c / a\n5. c / a\n6. c / a\n7. c / a\n8. c / a\n回复「选 1」。",
+  "displayMessage": {
+   "key": "routing.candidates",
+   "params": {
+    "target": "a",
+    "lines": [
+     {
+      "kind": "c",
+      "agent": "a"
+     },
+     {
+      "kind": "c",
+      "agent": "a"
+     },
+     {
+      "kind": "c",
+      "agent": "a"
+     },
+     {
+      "kind": "c",
+      "agent": "a"
+     },
+     {
+      "kind": "c",
+      "agent": "a"
+     },
+     {
+      "kind": "c",
+      "agent": "a"
+     },
+     {
+      "kind": "c",
+      "agent": "a"
+     },
+     {
+      "kind": "c",
+      "agent": "a"
+     }
+    ]
+   }
+  }
+ },
+ {
+  "name": "watch.activity",
+  "uuid": "watch:alpha:1:1",
+  "text": "**[编组 alpha]**\n- Owner · alpha\\_design：出现\n- Worker · alpha\\_execute：working→可接收输入\n- Advisor · alpha\\_advisor：已离开编组（名称变化）\n角色活动（Herdr 采样，非业务状态）",
+  "displayMessage": {
+   "key": "watch.activity",
+   "params": {
+    "group": "alpha",
+    "lines": [
+     {
+      "role": "owner",
+      "name": "alpha_design",
+      "event": "appeared"
+     },
+     {
+      "role": "worker",
+      "name": "alpha_execute",
+      "event": "state_changed",
+      "from": "working",
+      "to": "ready"
+     },
+     {
+      "role": "advisor",
+      "name": "alpha_advisor",
+      "event": "left_group"
+     }
+    ]
+   }
+  }
+ },
+ {
+  "name": "watch.health.down",
+  "uuid": "watch:_health:1-1",
+  "text": "关注观测中断",
+  "displayMessage": {
+   "key": "watch.health.down"
+  }
+ },
+ {
+  "name": "watch.health.up",
+  "uuid": "watch:_health:2-1",
+  "text": "关注观测恢复",
+  "displayMessage": {
+   "key": "watch.health.up"
+  }
+ },
+ {
+  "name": "watch.blocked",
+  "uuid": "watch:alpha:1:2",
+  "text": "关注推送含疑似敏感内容，已拦截",
+  "displayMessage": {
+   "key": "watch.blocked"
+  }
+ }
+]
