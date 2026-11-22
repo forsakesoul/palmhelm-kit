@@ -31,7 +31,7 @@ swift test
 
 ## Bridge 协议
 
-协议常量与路径位于 `Sources/PalmhelmKit/Constants.swift`。Bridge 协议文档尚未发布，目前以这些常量为准。
+协议常量与路径位于 `Sources/PalmhelmKit/Constants.swift`。Bridge 客户端协议见 [docs/PROTOCOL.zh-CN.md](docs/PROTOCOL.zh-CN.md)（English: [docs/PROTOCOL.md](docs/PROTOCOL.md)）；常量仍是代码层面的参照。
 
 - 协议版本 `local-api/1`（`BridgeAPI.protocolVersion`）。默认端口 `47821`（`BridgeAPI.defaultPort`）。
 - 传输：启用 TLS 时，所有监听地址使用 https，证书为自签名，客户端按 SPKI 指纹固定（`Pinning.swift`）。明文 http 仅允许回环地址（`BridgeClient.allowsPlaintext`）。
