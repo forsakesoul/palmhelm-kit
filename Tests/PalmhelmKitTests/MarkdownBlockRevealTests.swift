@@ -9,12 +9,12 @@ import Testing
         return String(decoding: u[r], as: UTF8.self)
     }
     private func ranges(_ text: String) -> [Range<Int>] { MarkdownBlock.parseRanged(text).map(\.utf8Range) }
-    private func reveal(prefix: Int, start: Double = 1, window: Double = 0.25, gen: Int = 1) -> MarkdownBlockReveal {
-        MarkdownBlockReveal(generation: gen, prefixUTF8Count: prefix, startUptime: start, deadlineUptime: start + window)!
+    private func reveal(prefix: Int, start: Double = 1, window: Double = 0.25, gen: Int = 1, style: MarkdownBlockReveal.Style = .brief) -> MarkdownBlockReveal {
+        MarkdownBlockReveal(generation: gen, prefixUTF8Count: prefix, startUptime: start, deadlineUptime: start + window, style: style)!
     }
-    private func schedule(_ old: String, _ new: String, window: Double = 0.25) -> MarkdownBlockSchedule? {
+    private func schedule(_ old: String, _ new: String, window: Double = 0.25, style: MarkdownBlockReveal.Style = .brief) -> MarkdownBlockSchedule? {
         MarkdownBlockSchedule(ranges: MarkdownBlock.parseRanged(new).map { Optional($0.utf8Range) }, utf8Count: new.utf8.count,
-                              reveal: reveal(prefix: old.utf8.count, window: window))
+                              reveal: reveal(prefix: old.utf8.count, window: window, style: style))
     }
 
     // MARK: 源范围
@@ -107,6 +107,63 @@ import Testing
         #expect(short.slots.allSatisfy { abs($0.duration - 0.10) < 1e-9 } && short.slots.allSatisfy { $0.delay == 0 })
         #expect(make(3, window: 1.0 / 24.0 - 0.001) == nil) // 不足一帧 → 全文
         #expect(make(3, window: 1.0 / 24.0) != nil)
+    }
+
+    // MARK: arrival 口径（#109）；brief 的全部断言保持不变
+    @Test func arrivalAllowsEightHundredMillisecondsAndBriefStillRejectsIt() {
+        #expect(MarkdownBlockReveal(generation: 1, prefixUTF8Count: 0, startUptime: 1, deadlineUptime: 1.8, style: .arrival) != nil)
+        #expect(MarkdownBlockReveal(generation: 1, prefixUTF8Count: 0, startUptime: 1, deadlineUptime: 1.801, style: .arrival) == nil)
+        #expect(MarkdownBlockReveal(generation: 1, prefixUTF8Count: 0, startUptime: 1, deadlineUptime: 1.8) == nil) // 默认仍是 brief
+        #expect(MarkdownBlockReveal.Style.brief.maxWindow == MarkdownBlockReveal.maxWindow && MarkdownBlockReveal.maxWindow == 0.250)
+        #expect(MarkdownBlockReveal.blockDuration == 0.120 && MarkdownBlockReveal.maxStep == 0.024 && MarkdownBlockReveal.maxNewBlocks == 16)
+    }
+
+    @Test func arrivalTimingsAndStep() {
+        func rs(_ n: Int) -> [Range<Int>?] { (0..<n).map { Optional($0 * 2..<($0 * 2 + 2)) } }
+        func make(_ n: Int, window: Double) -> MarkdownBlockSchedule? {
+            MarkdownBlockSchedule(ranges: rs(n), utf8Count: n * 2, reveal: reveal(prefix: 0, window: window, style: .arrival))
+        }
+        let three = make(3, window: 0.8)!                       // 目标步进 60ms，块 360ms
+        #expect(three.slots.map(\.delay).enumerated().allSatisfy { abs($1 - Double($0) * 0.06) < 1e-9 })
+        #expect(three.slots.allSatisfy { abs($0.duration - 0.36) < 1e-9 })
+        let sixteen = make(16, window: 0.8)!                    // 16 块：窗口内压缩，末块结束不超 800ms
+        #expect(sixteen.slots.count == 16)
+        let last = sixteen.slots.last!
+        #expect(last.delay + last.duration <= 0.8 + 1e-9)
+        #expect(sixteen.slots[1].delay < 0.06)                  // 压缩后步进小于目标，不超窗口
+        #expect(make(3, window: 1.0 / 24.0 - 0.001) == nil)     // 不足一帧 → 全文
+        #expect(make(3, window: 1.0 / 24.0) != nil)
+    }
+
+    @Test func arrivalPicksFirstSixteenFreshBlocksButValidatesEveryRange() {
+        func rs(_ n: Int) -> [Range<Int>?] { (0..<n).map { Optional($0 * 2..<($0 * 2 + 2)) } }
+        let twenty = MarkdownBlockSchedule(ranges: rs(20), utf8Count: 40, reveal: reveal(prefix: 0, window: 0.8, style: .arrival))!
+        #expect(twenty.slots.map(\.index) == Array(0..<16))    // 按源顺序前 16 个
+        #expect(twenty.slot(for: 16) == nil && twenty.slot(for: 19) == nil) // 其余直显
+        #expect(MarkdownBlockSchedule(ranges: rs(17), utf8Count: 34, reveal: reveal(prefix: 0, window: 0.25, style: .brief)) == nil)
+        var bad = rs(20); bad[19] = 36..<50                     // 越界尾部：即使前 16 合法也整条直显
+        #expect(MarkdownBlockSchedule(ranges: bad, utf8Count: 40, reveal: reveal(prefix: 0, window: 0.8, style: .arrival)) == nil)
+        var overlap = rs(18); overlap[17] = 30..<34             // 重叠尾部
+        #expect(MarkdownBlockSchedule(ranges: overlap, utf8Count: 36, reveal: reveal(prefix: 0, window: 0.8, style: .arrival)) == nil)
+        var missing = rs(18); missing[17] = nil                 // 缺失尾部
+        #expect(MarkdownBlockSchedule(ranges: missing, utf8Count: 36, reveal: reveal(prefix: 0, window: 0.8, style: .arrival)) == nil)
+    }
+
+    @Test func arrivalKeepsPrefixAndGrowthSemantics() {
+        #expect(schedule("段一", "段一继续", style: .arrival) == nil)                                       // 同块增长直显
+        #expect(schedule("| a | b |", "| a | b |\n|---|---|\n| 1 | 2 |", style: .arrival) == nil)
+        #expect(schedule("段一\n\n```\nlet a", "段一\n\n```\nlet a\nlet b", style: .arrival) == nil)     // 旧块前缀不重播
+        #expect(schedule("段一\n\n", "段一\n\n```\nlet a", style: .arrival)?.slots.map(\.index) == [1])
+        #expect(schedule("段一", "段一\n\n## 标题\n内容", style: .arrival)?.slots.map(\.index) == [1, 2])
+    }
+
+    @Test func arrivalRejectsNonFiniteNegativeAndOverlimitRequests() {
+        func make(prefix: Int = 0, start: Double = 1, deadline: Double = 1.8) -> MarkdownBlockReveal? {
+            MarkdownBlockReveal(generation: 1, prefixUTF8Count: prefix, startUptime: start, deadlineUptime: deadline, style: .arrival)
+        }
+        #expect(make(start: .nan) == nil && make(deadline: .infinity) == nil)
+        #expect(make(prefix: -1) == nil && make(start: -1, deadline: 0.5) == nil)
+        #expect(make(deadline: 1) == nil && make(deadline: 1.801) == nil)
     }
 
     @Test func revealRequestIsValidated() {
