@@ -31,7 +31,7 @@ swift test
 
 ## Bridge protocol
 
-Protocol constants and paths live in `Sources/PalmhelmKit/Constants.swift`. The Bridge protocol document is not published yet, so the constants are the reference for now.
+Protocol constants and paths live in `Sources/PalmhelmKit/Constants.swift`. The Bridge client protocol is documented in [docs/PROTOCOL.md](docs/PROTOCOL.md) (中文: [docs/PROTOCOL.zh-CN.md](docs/PROTOCOL.zh-CN.md)). The constants remain the code-level reference.
 
 - Protocol version `local-api/1` (`BridgeAPI.protocolVersion`). Default port `47821` (`BridgeAPI.defaultPort`).
 - Transport: when TLS is enabled, all listen addresses use https with a self-signed certificate that the client pins by SPKI fingerprint (`Pinning.swift`). Plain http is accepted only for loopback (`BridgeClient.allowsPlaintext`).
