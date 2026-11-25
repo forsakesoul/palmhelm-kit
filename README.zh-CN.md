@@ -15,7 +15,7 @@ PalmhelmKit 是 Palmhelm 客户端共用的 Swift 包。它包含 Bridge API 客
 ## 通过 Swift Package Manager 使用
 
 ```swift
-.package(url: "https://github.com/forsakesoul/palmhelm-kit.git", exact: "0.0.3")
+.package(url: "https://github.com/forsakesoul/palmhelm-kit.git", exact: "0.0.4")
 ```
 
 然后把 `PalmhelmKit` 产品加入你的 target。
