@@ -776,6 +776,78 @@
       },
       "shouldGenerateSymbols": false
     },
+    "Gemini · 5 小时": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemini · 5 hours"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemini · 5 小时"
+          }
+        }
+      },
+      "shouldGenerateSymbols": false
+    },
+    "Gemini · 7 天": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemini · 7 days"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemini · 7 天"
+          }
+        }
+      },
+      "shouldGenerateSymbols": false
+    },
+    "第三方模型 · 5 小时": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Third-party models · 5 hours"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第三方模型 · 5 小时"
+          }
+        }
+      },
+      "shouldGenerateSymbols": false
+    },
+    "第三方模型 · 7 天": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Third-party models · 7 days"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第三方模型 · 7 天"
+          }
+        }
+      },
+      "shouldGenerateSymbols": false
+    },
     "GitHub 来源暂不可用。请到 Mac 终端检查 gh 登录状态。手工需求仍可用。": {
       "extractionState": "manual",
       "localizations": {
@@ -3018,6 +3090,24 @@
       },
       "shouldGenerateSymbols": false
     },
+    "已接入，等待 Antigravity 下次刷新状态行（在 agy 里发一条消息后会更新）": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connected. Waiting for Antigravity's next status line refresh (updates after you send a message in agy)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已接入，等待 Antigravity 下次刷新状态行（在 agy 里发一条消息后会更新）"
+          }
+        }
+      },
+      "shouldGenerateSymbols": false
+    },
     "已撤回": {
       "extractionState": "manual",
       "localizations": {
@@ -4429,6 +4519,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "有窗口已经重置，显示的数字已过期，请刷新"
+          }
+        }
+      },
+      "shouldGenerateSymbols": false
+    },
+    "有窗口已经重置，显示的数字已过期；需要 Antigravity 运行并刷新状态行": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A window has reset, so the numbers shown are out of date; Antigravity needs to be running and refreshing the status line"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有窗口已经重置，显示的数字已过期；需要 Antigravity 运行并刷新状态行"
           }
         }
       },
@@ -7139,6 +7247,24 @@
           "stringUnit": {
             "state": "translated",
             "value": "超过 30 分钟没有新数据（需要 Claude Code 运行并刷新状态行），显示 %@ 的数据"
+          }
+        }
+      },
+      "shouldGenerateSymbols": false
+    },
+    "超过 30 分钟没有新数据（需要 Antigravity 运行并刷新状态行），显示 %@ 的数据": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No new data for over 30 minutes (Antigravity needs to be running and refreshing the status line), showing data from %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超过 30 分钟没有新数据（需要 Antigravity 运行并刷新状态行），显示 %@ 的数据"
           }
         }
       },

@@ -77,6 +77,13 @@ public enum QuotaCopy {
     /// 套餐只用已确认的计费类别与协议枚举，不从窗口或任意上游文本猜档位。
     public static func planTitle(_ a: AccountSnapshot) -> String {
         if a.billingMode == "api" { return "API" }
+        // agy 的套餐只认白名单，不回显任意上游文本；Bridge 未必给 billingMode，不要求为 subscription。
+        if a.provider == "agy" {
+            switch a.plan {
+            case "Google AI Pro", "Google AI Ultra": return a.plan!
+            default: return KitL10n.string("套餐未知")
+            }
+        }
         guard a.billingMode == "subscription", let plan = a.plan else { return KitL10n.string("套餐未知") }
         if a.provider == "claude" {
             switch plan {
@@ -128,7 +135,7 @@ public enum QuotaCopy {
     public static func windowEvidence(_ w: AccountWindow, time: (Int) -> String) -> String? {
         let source: String
         switch w.source {
-        case "claude_statusline", "qoder_statusline": source = KitL10n.string("状态行")
+        case "claude_statusline", "qoder_statusline", "agy_statusline": source = KitL10n.string("状态行")
         case "claude_oauth_usage": source = KitL10n.string("OAuth 额度查询")
         default: return nil
         }
@@ -142,6 +149,7 @@ public enum QuotaCopy {
         case "codex": return "Codex"
         case "claude": return "Claude"
         case "qoder": return "Qoder"
+        case "agy": return "Antigravity"
         default: return provider
         }
     }
@@ -173,10 +181,10 @@ public enum QuotaCopy {
         return Double(r) <= now.timeIntervalSince1970 * 1000
     }
 
-    /// 共同展示层的有界防御（R4）与 Claude 的跨重置判断（R5）。纯函数：只看快照与当前时刻，不改服务端数据。
+    /// 共同展示层的有界防御（R4）与 Claude / Antigravity 的跨重置判断（R5）。纯函数：只看快照与当前时刻，不改服务端数据。
     /// 百分比不在 0–100 的有限数、或重置时间超出可安全换算的范围 → 该字段按未知处理（不填 0）。
-    /// Claude 窗口的重置时间已过 → 隐藏旧比例，标记为已重置（「已重置，等待新数据」）；Codex 的既有过期口径不变。
-    /// qoder 窗口的标题与重置文案依赖这里补上的 source，调用方必须先经过 displayAccount。
+    /// Claude 与 Antigravity 窗口的重置时间已过 → 隐藏旧比例，标记为已重置（「已重置，等待新数据」）；Codex 的既有过期口径不变。
+    /// qoder / agy 窗口的标题与重置文案依赖这里补上的 source，调用方必须先经过 displayAccount。
     public static func displayAccount(_ a: AccountSnapshot, now: Date) -> AccountSnapshot {
         var out = a
         if a.billingMode == "api" {
@@ -188,9 +196,10 @@ public enum QuotaCopy {
             var x = w
             if let p = x.usedPercent, !(p.isFinite && p >= 0 && p <= 100) { x.usedPercent = nil }
             if let r = x.resetAt, !(r > 0 && r <= 100_000_000_000_000) { x.resetAt = nil }
-            // qoder 的额度窗口由包装脚本写入，载荷里没有窗口来源：这里补上，标题与重置文案据此区分。
+            // qoder / agy 的额度窗口载荷里没有窗口来源：这里补上，标题与证据文案据此区分。
             if a.provider == "qoder", x.source == nil { x.source = "qoder_statusline" }
-            if a.provider == "claude", let r = x.resetAt, Double(r) <= nowMs {
+            if a.provider == "agy", x.source == nil { x.source = "agy_statusline" }
+            if (a.provider == "claude" || a.provider == "agy"), let r = x.resetAt, Double(r) <= nowMs {
                 x.usedPercent = nil
                 x.reset = true
             }
@@ -209,9 +218,21 @@ public enum QuotaCopy {
         }
     }
 
+    /// agy 额度窗口按模型组与周期给名字；限定 agy 来源，免得和其他来源的同名窗口撞上。
+    private static func agyWindowTitle(_ w: AccountWindow) -> String? {
+        guard w.source == "agy_statusline" else { return nil }
+        switch w.id {
+        case "gemini-5h": return KitL10n.string("Gemini · 5 小时")
+        case "gemini-weekly": return KitL10n.string("Gemini · 7 天")
+        case "3p-5h": return KitL10n.string("第三方模型 · 5 小时")
+        case "3p-weekly": return KitL10n.string("第三方模型 · 7 天")
+        default: return nil
+        }
+    }
+
     /// 窗口名：按服务端给的窗口长度生成（不写死 5 小时 / 7 天）；没有长度就只写「窗口」。
     public static func windowTitle(_ w: AccountWindow) -> String {
-        if let t = qoderWindowTitle(w) { return t }
+        if let t = qoderWindowTitle(w) ?? agyWindowTitle(w) { return t }
         if w.id == "seven_day:fable" { return KitL10n.string("Fable · 7 天") }
         let base: String
         if let m = w.windowMins, m > 0 {
@@ -224,7 +245,7 @@ public enum QuotaCopy {
 
     /// 额度行的短窗口名（O1-352）：「5 小时」「7 天」；没有长度时只写「窗口」。与 windowTitle 的判定同口径，只是不带「窗口」二字。
     public static func shortWindowTitle(_ w: AccountWindow) -> String {
-        if let t = qoderWindowTitle(w) { return t }
+        if let t = qoderWindowTitle(w) ?? agyWindowTitle(w) { return t }
         if w.id == "seven_day:fable" { return KitL10n.string("Fable · 7 天") }
         if let m = w.windowMins, m > 0 {
             if m % 1440 == 0 { return KitL10n.format("%lld 天", m / 1440) }
@@ -290,10 +311,16 @@ public enum QuotaCopy {
         case "ok": return nil
         case "not_supported": return KitL10n.string("当前账户没有可读取的订阅额度（可能未安装 Codex、版本不支持，或使用的不是订阅账户）")
         case "not_logged_in": return KitL10n.string("Codex 尚未登录，登录后再刷新")
-        case "awaiting_refresh": return KitL10n.string("已接入，等待 Claude Code 下次刷新（发送一条消息后会更新）")
+        case "awaiting_refresh":
+            if a.provider == "agy" { return KitL10n.string("已接入，等待 Antigravity 下次刷新状态行（在 agy 里发一条消息后会更新）") }
+            return KitL10n.string("已接入，等待 Claude Code 下次刷新（发送一条消息后会更新）")
         case "stale":
-            if (a.windows ?? []).contains(where: { windowExpired($0, now: now) }) { return KitL10n.string("有窗口已经重置，显示的数字已过期，请刷新") }
+            if (a.windows ?? []).contains(where: { windowExpired($0, now: now) }) {
+                if a.provider == "agy" { return KitL10n.string("有窗口已经重置，显示的数字已过期；需要 Antigravity 运行并刷新状态行") }
+                return KitL10n.string("有窗口已经重置，显示的数字已过期，请刷新")
+            }
             if a.provider == "claude" { return KitL10n.format("超过 30 分钟没有新数据（需要 Claude Code 运行并刷新状态行），显示 %@ 的数据", a.observedAt.map(observedText) ?? KitL10n.string("上次")) }
+            if a.provider == "agy" { return KitL10n.format("超过 30 分钟没有新数据（需要 Antigravity 运行并刷新状态行），显示 %@ 的数据", a.observedAt.map(observedText) ?? KitL10n.string("上次")) }
             let why = a.errorCode == nil ? "" : KitL10n.format("（%@）", errorText(a.errorCode))
             return KitL10n.format("离线或读取失败%@，显示 %@ 的数据", why, a.observedAt.map(observedText) ?? KitL10n.string("上次"))
         case "error": return KitL10n.format("读取失败：%@", errorText(a.errorCode))

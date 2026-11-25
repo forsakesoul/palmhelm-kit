@@ -16,6 +16,7 @@ public enum QuotaWindowPolicy {
         case "codex": return w.windowMins == 300 || w.windowMins == 10080
         case "claude": return claudeAllowed(w.id)
         case "qoder": return w.id == "credits" || w.id == "addon"
+        case "agy": return w.id == "gemini-5h" || w.id == "gemini-weekly" || w.id == "3p-5h" || w.id == "3p-weekly"
         default: return false
         }
     }
