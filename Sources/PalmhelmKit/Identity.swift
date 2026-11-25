@@ -50,6 +50,8 @@ public enum ThreadIdentity {
         case "claude": return "Claude"
         case "codex": return "Codex"
         case "pi": return "Pi"
+        case "agy": return "Antigravity"
+        case "qodercli": return "Qoder"
         default: return k.prefix(1).uppercased() + k.dropFirst()
         }
     }

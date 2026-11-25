@@ -53,13 +53,15 @@ import Testing
 
     @Test func copyCoversKnownCodesAndKeepsUnknown() {
         #expect(UsageCopy.reason("region_ambiguous") == "参考渠道不唯一，暂不估价")
-        for code in ["model_unknown", "price_missing", "price_field_missing", "price_overflow", "tokens_all_zero", "changed_during_read", "pi_inconsistent", "missing_id", "missing_field", "codex_reset", "codex_cache_write_unsupported", "overflow", "truncated_models", "rows_truncated", "bands_omitted", "wal_unverifiable", "journal_present"] {
+        for code in ["model_unknown", "price_missing", "price_field_missing", "price_overflow", "tokens_all_zero", "changed_during_read", "pi_inconsistent", "agy_inconsistent", "missing_id", "missing_field", "codex_reset", "codex_cache_write_unsupported", "overflow", "truncated_models", "rows_truncated", "bands_omitted", "wal_unverifiable", "journal_present"] {
             #expect(UsageCopy.reason(code) != code, "\(code) 应有中文说明")
         }
         #expect(UsageCopy.reason("sqlite_not_opened").contains("OpenCode"))
         #expect(UsageCopy.reason("some_new_code") == "some_new_code")
         #expect(UsageCopy.status("found_unusable") == "已发现，暂不可用")
         #expect(UsageCopy.sourceName("pi") == "Pi")
+        #expect(UsageCopy.sourceName("agy") == "Antigravity")
+        #expect(UsageCopy.reason("agy_inconsistent") == UsageCopy.reason("claude_inconsistent"))
         #expect(UsageCopy.refreshFailure("read_only").contains("只读"))
     }
 }

@@ -2436,6 +2436,60 @@
       },
       "shouldGenerateSymbols": false
     },
+    "套餐额度": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plan credits"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "套餐额度"
+          }
+        }
+      },
+      "shouldGenerateSymbols": false
+    },
+    "加购额度": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add-on credits"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加购额度"
+          }
+        }
+      },
+      "shouldGenerateSymbols": false
+    },
+    "不按周期重置": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No scheduled reset"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不按周期重置"
+          }
+        }
+      },
+      "shouldGenerateSymbols": false
+    },
     "存在 WAL 状态或旁路文件，未验证": {
       "extractionState": "manual",
       "localizations": {
