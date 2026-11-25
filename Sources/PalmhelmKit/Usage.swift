@@ -269,7 +269,7 @@ public enum PriceRefreshResult: Sendable, Equatable {
 /// 用量页的人话：来源名、四态、原因码。未知码原样返回（不吞掉）。
 public enum UsageCopy {
     public static func sourceName(_ s: String) -> String {
-        switch s { case "claude": "Claude Code"; case "codex": "Codex"; case "pi": "Pi"; case "qoder": "Qoder"; case "opencode": "OpenCode"; default: s }
+        switch s { case "claude": "Claude Code"; case "codex": "Codex"; case "pi": "Pi"; case "qoder": "Qoder"; case "agy": "Antigravity"; case "opencode": "OpenCode"; default: s }
     }
     public static func status(_ s: String) -> String {
         switch s { case "collected": KitL10n.string("已采集"); case "partial": KitL10n.string("部分采集"); case "found_unusable": KitL10n.string("已发现，暂不可用"); case "not_found": KitL10n.string("未发现记录"); default: s }
@@ -311,7 +311,7 @@ public enum UsageCopy {
         case "incomplete_files": KitL10n.string("有文件未读完")
         case "changed_during_read": KitL10n.string("有文件在读取中被改动")
         case "long_line": KitL10n.string("有超长记录行被跳过")
-        case "claude_inconsistent", "codex_inconsistent", "pi_inconsistent": KitL10n.string("有记录前后不一致，已跳过")
+        case "claude_inconsistent", "codex_inconsistent", "pi_inconsistent", "agy_inconsistent": KitL10n.string("有记录前后不一致，已跳过")
         case "missing_id", "pi_missing_id": KitL10n.string("有记录缺少编号，已跳过")
         case "missing_field", "pi_missing_field": KitL10n.string("有记录缺少字段，已跳过")
         case "codex_baseline_unknown": KitL10n.string("部分 Codex 会话缺少起点")

@@ -128,7 +128,7 @@ public enum QuotaCopy {
     public static func windowEvidence(_ w: AccountWindow, time: (Int) -> String) -> String? {
         let source: String
         switch w.source {
-        case "claude_statusline": source = KitL10n.string("状态行")
+        case "claude_statusline", "qoder_statusline": source = KitL10n.string("状态行")
         case "claude_oauth_usage": source = KitL10n.string("OAuth 额度查询")
         default: return nil
         }
@@ -141,6 +141,7 @@ public enum QuotaCopy {
         switch provider {
         case "codex": return "Codex"
         case "claude": return "Claude"
+        case "qoder": return "Qoder"
         default: return provider
         }
     }
@@ -168,13 +169,14 @@ public enum QuotaCopy {
 
     /// 一个窗口是否已经过了重置时刻（过了就不能再当成当前值）。
     public static func windowExpired(_ w: AccountWindow, now: Date) -> Bool {
-        guard let r = w.resetAt else { return false }
+        guard let r = w.resetAt, r > 0 else { return false }
         return Double(r) <= now.timeIntervalSince1970 * 1000
     }
 
     /// 共同展示层的有界防御（R4）与 Claude 的跨重置判断（R5）。纯函数：只看快照与当前时刻，不改服务端数据。
     /// 百分比不在 0–100 的有限数、或重置时间超出可安全换算的范围 → 该字段按未知处理（不填 0）。
     /// Claude 窗口的重置时间已过 → 隐藏旧比例，标记为已重置（「已重置，等待新数据」）；Codex 的既有过期口径不变。
+    /// qoder 窗口的标题与重置文案依赖这里补上的 source，调用方必须先经过 displayAccount。
     public static func displayAccount(_ a: AccountSnapshot, now: Date) -> AccountSnapshot {
         var out = a
         if a.billingMode == "api" {
@@ -186,6 +188,8 @@ public enum QuotaCopy {
             var x = w
             if let p = x.usedPercent, !(p.isFinite && p >= 0 && p <= 100) { x.usedPercent = nil }
             if let r = x.resetAt, !(r > 0 && r <= 100_000_000_000_000) { x.resetAt = nil }
+            // qoder 的额度窗口由包装脚本写入，载荷里没有窗口来源：这里补上，标题与重置文案据此区分。
+            if a.provider == "qoder", x.source == nil { x.source = "qoder_statusline" }
             if a.provider == "claude", let r = x.resetAt, Double(r) <= nowMs {
                 x.usedPercent = nil
                 x.reset = true
@@ -195,8 +199,19 @@ public enum QuotaCopy {
         return out
     }
 
+    /// qoder 额度窗口没有周期长度，只按窗口 id 给名字；限定 qoder 来源，免得和其他来源的同名窗口撞上。
+    private static func qoderWindowTitle(_ w: AccountWindow) -> String? {
+        guard w.source == "qoder_statusline" else { return nil }
+        switch w.id {
+        case "credits": return KitL10n.string("套餐额度")
+        case "addon": return KitL10n.string("加购额度")
+        default: return nil
+        }
+    }
+
     /// 窗口名：按服务端给的窗口长度生成（不写死 5 小时 / 7 天）；没有长度就只写「窗口」。
     public static func windowTitle(_ w: AccountWindow) -> String {
+        if let t = qoderWindowTitle(w) { return t }
         if w.id == "seven_day:fable" { return KitL10n.string("Fable · 7 天") }
         let base: String
         if let m = w.windowMins, m > 0 {
@@ -209,6 +224,7 @@ public enum QuotaCopy {
 
     /// 额度行的短窗口名（O1-352）：「5 小时」「7 天」；没有长度时只写「窗口」。与 windowTitle 的判定同口径，只是不带「窗口」二字。
     public static func shortWindowTitle(_ w: AccountWindow) -> String {
+        if let t = qoderWindowTitle(w) { return t }
         if w.id == "seven_day:fable" { return KitL10n.string("Fable · 7 天") }
         if let m = w.windowMins, m > 0 {
             if m % 1440 == 0 { return KitL10n.format("%lld 天", m / 1440) }
@@ -221,7 +237,8 @@ public enum QuotaCopy {
     /// 重置倒计时：没有重置时间 → 未知；已过 → 已到重置时刻；否则给出剩余时长。
     public static func resetText(_ w: AccountWindow, now: Date) -> String {
         if w.reset == true { return KitL10n.string("已重置") }
-        guard let r = w.resetAt else { return KitL10n.string("重置时间未知") }
+        // 0 不是重置时刻：qoder 的无周期窗口显示“不按周期重置”，其他来源保持“重置时间未知”。
+        guard let r = w.resetAt, r > 0 else { return KitL10n.string(w.source == "qoder_statusline" ? "不按周期重置" : "重置时间未知") }
         let left = Double(r) - now.timeIntervalSince1970 * 1000
         if left <= 0 { return KitL10n.string("已到重置时刻，需要刷新") }
         let mins = Int(left / 60_000)

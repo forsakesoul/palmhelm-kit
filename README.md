@@ -15,7 +15,7 @@ PalmhelmKit is the client side only. The Palmhelm Bridge that it talks to is a s
 ## Use it from Swift Package Manager
 
 ```swift
-.package(url: "https://github.com/forsakesoul/palmhelm-kit.git", exact: "0.0.1")
+.package(url: "https://github.com/forsakesoul/palmhelm-kit.git", exact: "0.0.3")
 ```
 
 Then add the `PalmhelmKit` product to your target.

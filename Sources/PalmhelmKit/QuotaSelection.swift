@@ -15,6 +15,7 @@ public enum QuotaWindowPolicy {
         switch provider {
         case "codex": return w.windowMins == 300 || w.windowMins == 10080
         case "claude": return claudeAllowed(w.id)
+        case "qoder": return w.id == "credits" || w.id == "addon"
         default: return false
         }
     }
