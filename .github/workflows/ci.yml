@@ -1,0 +1,26 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Swift build + test (macOS)
+    # 公开仓库：GitHub 托管的 macOS runner 对公开仓库免费且无限量，
+    # 不需要（也不应该）把自己的机器暴露给公开仓库的 fork PR。
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: swift build
+        run: swift build
+      - name: swift test
+        run: swift test
