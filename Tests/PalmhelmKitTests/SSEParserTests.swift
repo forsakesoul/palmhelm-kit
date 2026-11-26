@@ -16,6 +16,18 @@ import Foundation
         #expect(b[0].event == "ping")
     }
 
+    // h4 §2.1：SSE targets 帧同样不因一个目标的 customTitle 形状不对而整帧丢失。
+    @Test func targetsFrameSurvivesAMalformedCustomTitle() {
+        let frame = SSEFrame(id: nil, event: "targets", data: #"{"occupancy":"idle","history":{"highWater":0,"items":[]},"targets":[{"projectName":"bad","id":"t1","customTitle":[1]},{"projectName":"good","id":"t2","customTitle":"正常"}]}"#)
+        guard case let .targets(targets, _, _, _, _) = BridgeEventDecoder.decode(frame) else {
+            Issue.record("targets 帧被丢弃")
+            return
+        }
+        #expect(targets.map(\.projectName) == ["bad", "good"])
+        #expect(targets[0].customTitle == nil)
+        #expect(targets[1].customTitle == "正常")
+    }
+
     @Test func decodesBridgeEvents() {
         let sync = SSEFrame(id: nil, event: "sync", data: "{\"highWater\":12,\"count\":3,\"mode\":\"snapshot\"}")
         #expect(BridgeEventDecoder.decode(sync) == .sync(highWater: 12, count: 3, mode: "snapshot"))

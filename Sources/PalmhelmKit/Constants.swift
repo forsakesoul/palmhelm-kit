@@ -41,6 +41,8 @@ public enum BridgeAPI {
         /// `POST /v1/targets/{id}/reveal`：id 为一个百分号编码的路径段。
         public static let targets = "/v1/targets"
         public static let revealSuffix = "/reveal"
+        /// `PUT /v1/targets/{id}/title`（#134）：id 为一个百分号编码的路径段；设置或清除对话自定义名。
+        public static let titleSuffix = "/title"
         /// `GET /v1/targets/{id}/transcript?before&limit`：会话记录线程分页（2a）。
         public static let transcriptSuffix = "/transcript"
         /// `GET /v1/targets/{id}/history?before&limit`：目标账本历史分页（#97，历史离线目标的归档阅读）。

@@ -60,8 +60,9 @@ public enum ThreadIdentity {
 
     public static func status(_ t: TargetSummary) -> AgentStatus? { t.status.flatMap(AgentStatus.init(rawValue:)) }
 
-    /// 行标题回退：会话主题 → 标签名（非通用名）→ “工作区 · 项目” → 项目名。
+    /// 行标题回退：自定义名（用户起的，#134）→ 会话主题 → 标签名（非通用名）→ “工作区 · 项目” → 项目名。
     public static func title(_ t: TargetSummary) -> String {
+        if let custom = t.customTitle?.trimmingCharacters(in: .whitespacesAndNewlines), !custom.isEmpty { return custom }
         if let topic = t.topic?.text.trimmingCharacters(in: .whitespacesAndNewlines), !topic.isEmpty { return topic }
         if let tab = t.location?.tab, !isGeneric(tab) { return tab }
         if let ws = t.location?.workspace, !isGeneric(ws), ws != t.projectName { return "\(ws) · \(t.projectName)" }
@@ -70,12 +71,14 @@ public enum ThreadIdentity {
 
     /// 对话页顶部标题（两端共用）：“角色/agent 名 · 项目”。只用 Bridge 已投影的身份字段，不读 topic 与消息正文，
     /// 所以会话主题或最新消息变化不会改标题；列表、通知、搜索仍用 `title`。
+    /// 自定义名（#134）是例外：它是用户显式起的、稳定的名字，不随会话主题变化，因此优先于身份字段。
     public static func conversationTitle(_ t: TargetSummary?) -> String {
         guard let t else { return ScreenCopy.tabChat }
         func clean(_ s: String?) -> String? {
             guard let v = s?.trimmingCharacters(in: .whitespacesAndNewlines), !v.isEmpty else { return nil }
             return v
         }
+        if let custom = clean(t.customTitle) { return custom }
         var left: String? = clean(t.role).flatMap(AgentRole.init(rawValue:))?.label
         if left == nil, let n = clean(t.agentName), !isGeneric(n), !isGeneratedTaskName(n) { left = n }
         if left == nil, let tab = clean(t.location?.tab), !isGeneric(tab) { left = tab }
