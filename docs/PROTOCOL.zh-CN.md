@@ -298,6 +298,8 @@ APNs token为64位十六进制（Kit要求小写，服务端规范化大小写�
 
 字段形状见 [QuotaAccounts.swift](https://github.com/forsakesoul/palmhelm-kit/blob/0.0.1/Sources/PalmhelmKit/QuotaAccounts.swift)。reset后缺usedPercent不表示用量0%；stale/error/awaiting_refresh不是新鲜余额。refresh=1当前按60秒节流，可返回缓存并标throttled=true。
 
+账户可选字段 `planQuota`（仅 Qoder）：`"not_included"` 表示套餐额度总量确认为 0，显示“当前套餐不含套餐额度”；缺键或未知取值不显示，沿用 `CONTRIBUTING.md` 的兼容规范。
+
 字段形状见 [Usage.swift](https://github.com/forsakesoul/palmhelm-kit/blob/0.0.1/Sources/PalmhelmKit/Usage.swift)。coverage反映索引进度，不保证完整。estimate显式分版本，只解码已知version1，未知版本不应使整份响应失效。null/无价/partial/stale金额不等于已核验零费用，也不是账单；使用版本化estimate与来源，不用不完整旧prices自造总额。
 
 安装/卸载钩子会改变主机配置，须有明确用户意图。managedLocation/configVersion用于归属检查，不静默覆盖别处安装；确认/版本冲突时刷新状态并明确确认。状态不可读不等于未安装，不将原始路径/错误内容当可信指令展示。完整可选测量/详情字段见下方公开schema目录。

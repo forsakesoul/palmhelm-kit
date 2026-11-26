@@ -25,6 +25,8 @@ public struct AccountSnapshot: Codable, Sendable, Equatable, Identifiable {
     public var accountId: String
     public var label: String?
     public var plan: String?
+    /// Qoder 套餐额度总量确认为 0 时为 "not_included"（Bridge #149）；缺键、未知取值或非 Qoder 不显示，见 QuotaCopy.planQuotaNote。
+    public var planQuota: String?
     public var billingMode: String? // subscription / api / unknown；旧 Bridge 缺失时为未知，不清除窗口
     public var windows: [AccountWindow]?
     public var source: String
@@ -35,8 +37,8 @@ public struct AccountSnapshot: Codable, Sendable, Equatable, Identifiable {
     /// 合并进这个账户的配置来源（#49，Bridge 的 sources[]）；旧 Bridge 没有此键时为 nil。额度只取最新一次采集，不相加。
     public var sources: [AccountSourceSummary]?
     public var id: String { provider + "|" + accountId }
-    public init(provider: String, accountId: String, label: String? = nil, plan: String? = nil, billingMode: String? = nil, windows: [AccountWindow]? = nil, source: String, observedAt: Int? = nil, status: String, errorCode: String? = nil, retryAfterT: Int? = nil, sources: [AccountSourceSummary]? = nil) {
-        self.provider = provider; self.accountId = accountId; self.label = label; self.plan = plan; self.windows = windows
+    public init(provider: String, accountId: String, label: String? = nil, plan: String? = nil, planQuota: String? = nil, billingMode: String? = nil, windows: [AccountWindow]? = nil, source: String, observedAt: Int? = nil, status: String, errorCode: String? = nil, retryAfterT: Int? = nil, sources: [AccountSourceSummary]? = nil) {
+        self.provider = provider; self.accountId = accountId; self.label = label; self.plan = plan; self.planQuota = planQuota; self.windows = windows
         self.source = source; self.observedAt = observedAt; self.status = status; self.errorCode = errorCode; self.retryAfterT = retryAfterT
         self.sources = sources
         self.billingMode = billingMode
@@ -152,6 +154,11 @@ public enum QuotaCopy {
         case "agy": return "Antigravity"
         default: return provider
         }
+    }
+    /// Qoder 套餐额度总量为 0（planQuota == "not_included"，Bridge #149）时的说明；其它取值、缺键或非 Qoder 为 nil。
+    public static func planQuotaNote(_ a: AccountSnapshot) -> String? {
+        guard a.provider == "qoder", a.planQuota == "not_included" else { return nil }
+        return KitL10n.string("当前套餐不含套餐额度")
     }
     /// 账户由多个配置来源合并时的说明（额度不相加）；只有一个来源或没有来源信息时为 nil。
     public static func sourcesNote(_ a: AccountSnapshot) -> String? {
