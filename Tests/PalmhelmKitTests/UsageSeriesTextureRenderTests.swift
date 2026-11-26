@@ -21,9 +21,18 @@ import Testing
                                 space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
             ctx?.draw(image, in: CGRect(x: 0, y: 0, width: size, height: size))
         }
-        return Set(stride(from: 0, to: buf.count, by: 4).map { i in
-            UInt32(buf[i]) << 24 | UInt32(buf[i + 1]) << 16 | UInt32(buf[i + 2]) << 8 | UInt32(buf[i + 3])
-        })
+        // 拼成 UInt32 像素值。拆成独立语句：写成一个内联的移位表达式时，
+        // GitHub 托管镜像的 swiftc 会报 "unable to type-check this expression in reasonable time"。
+        var out = Set<UInt32>()
+        out.reserveCapacity(buf.count / 4)
+        for i in stride(from: 0, to: buf.count, by: 4) {
+            let r = UInt32(buf[i]) << 24
+            let g = UInt32(buf[i + 1]) << 16
+            let b = UInt32(buf[i + 2]) << 8
+            let a = UInt32(buf[i + 3])
+            out.insert(r | g | b | a)
+        }
+        return out
     }
 
     @Test func offIsSolidForEverySeries() throws {
