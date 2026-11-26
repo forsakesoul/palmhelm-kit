@@ -108,6 +108,16 @@ final class StubDelayProtocol: URLProtocol {
         #expect((error as? URLError)?.code == .timedOut, "期限内返回超时，而不是等到 0.3 秒的响应")
         #expect(t < 0.25, "在期限附近结束：\(String(format: "%.2f", t))s")
     }
+
+    // #134：设置对话名（setTitle）与 reveal 一样经公共绝对期限：黑洞类的慢响应在期限内结束。
+    @Test func setTitleHonoursTheAbsoluteDeadline() async {
+        StubDelayProtocol.blackhole = false
+        StubDelayProtocol.delay = 0.3
+        defer { StubDelayProtocol.delay = 0 }
+        let (t, error) = await elapsed { _ = try await client(timeout: 0.05).setTitle(targetId: "t1", title: "x") }
+        #expect((error as? URLError)?.code == .timedOut, "期限内返回超时，而不是等到 0.3 秒的响应")
+        #expect(t < 0.25, "在期限附近结束：\(String(format: "%.2f", t))s")
+    }
 }
 
 // O1-349 R3：地址扫描游标——预算用尽时未试的候选留给下一轮；周期试完从头再来；成功才结束周期；不改写 preferred。

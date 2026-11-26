@@ -43,6 +43,12 @@ public enum RevealResult: Sendable, Equatable {
     case failed(status: Int, code: String?)
 }
 
+/// 设置对话自定义名的结果（#134）：`ok` 带 Bridge 保存的值（nil = 已清除）与 Herdr 同步结果（synced / pane_gone / pane_changed / herdr_unavailable）。
+public enum TitleResult: Sendable, Equatable {
+    case ok(customTitle: String?, herdr: String?)
+    case failed(status: Int, code: String?)
+}
+
 public enum BridgeError: Error, Sendable, Equatable {
     case badURL
     /// 非回环地址用了明文 http（iOS）：请求未构造、未发送。
@@ -344,6 +350,36 @@ public actor BridgeClient {
         let (data, response) = try await dataWithDeadline(request) // 经公共绝对期限（O1-349 R4）
         guard let http = response as? HTTPURLResponse else { throw BridgeError.decoding }
         if (200..<300).contains(http.statusCode) { return .ok }
+        let code = (try? JSONDecoder().decode(ErrorBody.self, from: data))?.error
+        return .failed(status: http.statusCode, code: code)
+    }
+
+    /// 「设置对话名」（#134）：PUT `{"title": …}`，nil 表示清除（JSON null，键必须存在）。名字保存即成功，`herdr` 只报告 pane 标签的同步结果。
+    public func setTitle(targetId: String, title: String?) async throws -> TitleResult {
+        var segment = CharacterSet.urlPathAllowed; segment.remove(charactersIn: "/")
+        guard let id = targetId.addingPercentEncoding(withAllowedCharacters: segment) else { throw BridgeError.badURL }
+        var request = URLRequest(url: try endpoint.url(BridgeAPI.Path.targets + "/" + id + BridgeAPI.Path.titleSuffix, percentEncoded: true))
+        request.httpMethod = "PUT"
+        request.setValue(BridgeAPI.Header.json, forHTTPHeaderField: BridgeAPI.Header.contentType)
+        if let token { request.setValue(BridgeAPI.Header.bearerPrefix + token, forHTTPHeaderField: BridgeAPI.Header.authorization) }
+        request.httpBody = try JSONSerialization.data(withJSONObject: ["title": title.map { $0 as Any } ?? NSNull()])
+        let (data, response) = try await dataWithDeadline(request) // 经公共绝对期限（与 reveal 相同）
+        guard let http = response as? HTTPURLResponse else { throw BridgeError.decoding }
+        if (200..<300).contains(http.statusCode) {
+            // 成功体必须含 customTitle 键（字符串或 null）；缺键或类型不符是协议错误，不能当作“已清除”。
+            guard let obj = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any], let custom = obj["customTitle"] else {
+                throw BridgeError.decoding
+            }
+            let customTitle: String?
+            if custom is NSNull {
+                customTitle = nil
+            } else if let s = custom as? String {
+                customTitle = s
+            } else {
+                throw BridgeError.decoding
+            }
+            return .ok(customTitle: customTitle, herdr: obj["herdr"] as? String)
+        }
         let code = (try? JSONDecoder().decode(ErrorBody.self, from: data))?.error
         return .failed(status: http.statusCode, code: code)
     }

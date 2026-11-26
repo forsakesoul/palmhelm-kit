@@ -25,6 +25,49 @@ final class IdentityTests: XCTestCase {
         XCTAssertEqual(ThreadIdentity.line(TargetSummary(projectName: "docs")), "docs")
     }
 
+    // #134：自定义名是用户显式起的稳定名字，优先于会话主题与身份字段；空白自定义名回退原链；旧 Bridge 无该字段。
+    func testCustomTitleWinsInListAndConversationTitles() {
+        var t = target(topic: "统计图配色")
+        t.customTitle = "  我的对话  "
+        XCTAssertEqual(ThreadIdentity.title(t), "我的对话", "列表标题优先自定义名")
+        XCTAssertEqual(ThreadIdentity.conversationTitle(t), "我的对话")
+        t.customTitle = "   "
+        XCTAssertEqual(ThreadIdentity.title(t), "统计图配色", "空白自定义名回退原链")
+        XCTAssertEqual(ThreadIdentity.conversationTitle(t), "设计 · remote-herdr-bridge", "空白自定义名回退原链")
+    }
+
+    func testConversationTitleKeepsIdentityWhenNoCustomTitle() {
+        let c = conv(role: "design", topic: "第一件事", repo: "palmhelm")
+        XCTAssertNil(c.customTitle)
+        XCTAssertEqual(ThreadIdentity.conversationTitle(c), "设计 · palmhelm")
+    }
+
+    func testCustomTitleDecodesWhenPresentAndIsNilWhenAbsent() throws {
+        let withTitle = try JSONDecoder().decode(TargetSummary.self, from: Data(#"{"projectName":"docs","id":"t1","customTitle":"名"}"#.utf8))
+        XCTAssertEqual(withTitle.customTitle, "名")
+        let legacy = try JSONDecoder().decode(TargetSummary.self, from: Data(#"{"projectName":"docs","id":"t1"}"#.utf8))
+        XCTAssertNil(legacy.customTitle, "旧 Bridge 没有该字段")
+    }
+
+    // h4 §2.1：一个目标的 customTitle 形状不对，不能让同一帧里的其它目标（与整个 state）解码失败。
+    func testMalformedCustomTitleDoesNotBreakTheTargetsFrame() throws {
+        let json = #"""
+        {"binding":null,"occupancy":"idle","history":{"highWater":0,"items":[]},
+         "targets":[{"projectName":"bad","id":"t1","customTitle":{"text":"对象"}},
+                    {"projectName":"good","id":"t2","customTitle":"正常名"}]}
+        """#
+        let s = try JSONDecoder().decode(BridgeState.self, from: Data(json.utf8))
+        XCTAssertEqual(s.targets.map(\.projectName), ["bad", "good"], "两个目标都解出")
+        XCTAssertNil(s.targets[0].customTitle, "形状不对的自定义名当作未设置")
+        XCTAssertEqual(s.targets[1].customTitle, "正常名")
+    }
+
+    func testCustomTitleIsSearchable() {
+        var t = conv("docs")
+        t.customTitle = "周报整理"
+        XCTAssertTrue(TargetFilter.matches(t, query: "周报"))
+    }
+
     private func conv(_ project: String = "docs", agent: String? = nil, role: String? = nil, topic: String? = nil, repo: String? = nil,
                       tab: String? = nil, pane: String? = nil) -> TargetSummary {
         TargetSummary(projectName: project, online: true, targetId: "target:\(project)", agentName: agent,

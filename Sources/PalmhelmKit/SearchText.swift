@@ -210,11 +210,11 @@ public struct SearchLocation: Equatable, Sendable {
 
 /// 目标列表的本地筛选：只看已经在手机上的目标，不发请求。
 public enum TargetFilter {
-    /// 不分大小写，agent 名 / 项目名 / 主题 / 工作区 / 标签 / 仓库名 / 分支 任一包含即命中；空白查询匹配全部。
+    /// 不分大小写，agent 名 / 项目名 / 自定义名（#134）/ 主题 / 工作区 / 标签 / 仓库名 / 分支 任一包含即命中；空白查询匹配全部。
     public static func matches(_ t: TargetSummary, query: String) -> Bool {
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !q.isEmpty else { return true }
-        let fields: [String?] = [t.agentName, t.projectName, t.topic?.text, t.location?.workspace, t.location?.tab, t.repo?.name, t.repo?.branch]
+        let fields: [String?] = [t.agentName, t.projectName, t.customTitle, t.topic?.text, t.location?.workspace, t.location?.tab, t.repo?.name, t.repo?.branch]
         return fields.contains { $0?.range(of: q, options: .caseInsensitive) != nil }
     }
 }

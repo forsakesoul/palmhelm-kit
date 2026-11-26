@@ -64,6 +64,8 @@ public struct TargetSummary: Codable, Sendable, Equatable, Identifiable {
     public var capabilities: TargetCapabilities?
     /// 服务端权威：未解决的身份暂停的事件键（有则显示「确认是同一个会话，恢复」）；旧服务端没有此字段。
     public var identityPauseKey: String?
+    /// 用户在 Palmhelm 起的名字（#134）：Bridge 权威，已是出站投影后的值；未设置或旧 Bridge 为 nil。
+    public var customTitle: String?
     public var id: String { targetId ?? projectName }
     /// 立即插入是否可能可用：nil = 旧 Bridge 未声明，界面不能据此当作「不支持」。
     /// 是否为支持新发送协议的 Bridge：新 Bridge 的每个 target 都带 capabilities（steer 可为 false）；缺字段 = 旧 Bridge，不发 mode / attribution。
@@ -75,12 +77,13 @@ public struct TargetSummary: Codable, Sendable, Equatable, Identifiable {
     /// 直达原生插话的能力（缺省 = 不支持；旧 Bridge 没有该字段）。
     public var nativeSteerEnabled: Bool { capabilities?.nativeSteer == true }
 
-    enum CodingKeys: String, CodingKey { case projectName, online, targetId = "id", agentName, group, kind, status, topic, role, groupShort, location, workspaceId, terminalId, repo, model, capabilities, identityPauseKey }
+    enum CodingKeys: String, CodingKey { case projectName, online, targetId = "id", agentName, group, kind, status, topic, role, groupShort, location, workspaceId, terminalId, repo, model, capabilities, identityPauseKey, customTitle }
 
     public init(projectName: String, online: Bool? = nil, targetId: String? = nil, agentName: String? = nil, group: String? = nil,
                 kind: String? = nil, status: String? = nil, topic: TargetTopic? = nil, role: String? = nil, groupShort: String? = nil, location: TargetLocation? = nil,
                 repo: TargetRepo? = nil, model: TargetModel? = nil, capabilities: TargetCapabilities? = nil,
-                workspaceId: String? = nil, terminalId: String? = nil) {
+                workspaceId: String? = nil, terminalId: String? = nil, customTitle: String? = nil) {
+        self.customTitle = customTitle
         self.workspaceId = workspaceId
         self.terminalId = terminalId
         self.projectName = projectName
@@ -92,6 +95,30 @@ public struct TargetSummary: Codable, Sendable, Equatable, Identifiable {
         self.repo = repo
         self.model = model
         self.capabilities = capabilities
+    }
+
+    /// 其它字段与合成解码相同（缺失 = nil，类型错误 = 整条失败）；customTitle 是新增的可选元数据，
+    /// 形状不对（对象、数字、数组）时当作未设置，不让整条目标、整帧 state 或 SSE targets 解码失败。
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        projectName = try c.decode(String.self, forKey: .projectName)
+        online = try c.decodeIfPresent(Bool.self, forKey: .online)
+        targetId = try c.decodeIfPresent(String.self, forKey: .targetId)
+        agentName = try c.decodeIfPresent(String.self, forKey: .agentName)
+        group = try c.decodeIfPresent(String.self, forKey: .group)
+        kind = try c.decodeIfPresent(String.self, forKey: .kind)
+        status = try c.decodeIfPresent(String.self, forKey: .status)
+        topic = try c.decodeIfPresent(TargetTopic.self, forKey: .topic)
+        role = try c.decodeIfPresent(String.self, forKey: .role)
+        groupShort = try c.decodeIfPresent(String.self, forKey: .groupShort)
+        location = try c.decodeIfPresent(TargetLocation.self, forKey: .location)
+        workspaceId = try c.decodeIfPresent(String.self, forKey: .workspaceId)
+        terminalId = try c.decodeIfPresent(String.self, forKey: .terminalId)
+        repo = try c.decodeIfPresent(TargetRepo.self, forKey: .repo)
+        model = try c.decodeIfPresent(TargetModel.self, forKey: .model)
+        capabilities = try c.decodeIfPresent(TargetCapabilities.self, forKey: .capabilities)
+        identityPauseKey = try c.decodeIfPresent(String.self, forKey: .identityPauseKey)
+        customTitle = try? c.decodeIfPresent(String.self, forKey: .customTitle)
     }
 }
 
