@@ -16,7 +16,9 @@ import Testing
         }
     }
 
-    @Test func defaultCallsKeepNaturalLayout() {
+    // SkeletonRows 是 View，成员受 MainActor 隔离；在非隔离的 #expect autoclosure 里读会报
+    // "main actor-isolated property 'style' can not be referenced from a nonisolated autoclosure"。
+    @MainActor @Test func defaultCallsKeepNaturalLayout() {
         let lines = SkeletonLines()
         #expect(lines.count == 3 && lines.lineHeight == 12 && lines.spacing == 8 && !lines.fill && lines.widths == nil && lines.barColor == nil)
         let rows = SkeletonRows()
