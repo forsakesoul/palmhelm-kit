@@ -2508,6 +2508,24 @@
       },
       "shouldGenerateSymbols": false
     },
+    "当前套餐不含套餐额度": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your plan doesn't include plan credits"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前套餐不含套餐额度"
+          }
+        }
+      },
+      "shouldGenerateSymbols": false
+    },
     "套餐额度": {
       "extractionState": "manual",
       "localizations": {

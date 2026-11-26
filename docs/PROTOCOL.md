@@ -298,6 +298,8 @@ These routes may be unavailable on an older or differently configured Bridge; ha
 
 Field shapes: [QuotaAccounts.swift](https://github.com/forsakesoul/palmhelm-kit/blob/0.0.1/Sources/PalmhelmKit/QuotaAccounts.swift). Missing usedPercent after reset is not 0% usage; stale/error/awaiting_refresh is not a fresh balance. refresh=1 is currently throttled to 60s and can return cached data with throttled=true.
 
+Account `planQuota` (optional, Qoder only): `"not_included"` means the plan credit total is confirmed as 0; show "Your plan doesn't include plan credits". Missing or unknown values show nothing, per `CONTRIBUTING.md` compatibility rules.
+
 Field shapes: [Usage.swift](https://github.com/forsakesoul/palmhelm-kit/blob/0.0.1/Sources/PalmhelmKit/Usage.swift). Coverage is evidence of indexing progress, not a guarantee of completeness. Estimate is explicitly versioned: decode known version 1 only; unknown versions must not invalidate the rest of the response. Null/unpriced/partial/stale cost is not a verified zero or a billing invoice. Use the versioned estimate/provenance rather than inventing a total from incomplete legacy prices.
 
 Hook install/uninstall changes host configuration and requires explicit user intent. managedLocation/configVersion support ownership checks: do not silently overwrite another installation; a confirmation/version conflict requires refreshed status and an explicit confirmed action. Unreadable status is not “not installed”. Do not display raw host paths/failure contents as trusted instructions. The full optional measurement/detail field definitions are linked in the public schema catalog below.

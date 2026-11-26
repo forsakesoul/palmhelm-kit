@@ -137,6 +137,29 @@ import Testing
     @Test func footnoteSaysItIsNotTheSameAsEstimate() {
         #expect(QuotaCopy.footnote.contains("不是一回事") && QuotaCopy.footnote.contains("服务商"))
     }
+
+    @Test func planQuotaDecodesOptionalAndOldBridgeOmitsIt() throws {
+        let with = try JSONDecoder().decode(AccountSnapshot.self, from: Data(#"{"provider":"qoder","accountId":"a","source":"qoder_statusline","observedAt":1792400000000,"status":"ok","planQuota":"not_included"}"#.utf8))
+        #expect(with.planQuota == "not_included")
+        let old = try JSONDecoder().decode(AccountSnapshot.self, from: Data(#"{"provider":"qoder","accountId":"a","source":"qoder_statusline","status":"ok"}"#.utf8))
+        #expect(old.planQuota == nil)
+    }
+
+    @Test func planQuotaNoteShowsOnlyForQoderNotIncluded() {
+        let at = now
+        func acct(_ provider: String, _ planQuota: String?) -> AccountSnapshot {
+            AccountSnapshot(provider: provider, accountId: "a", planQuota: planQuota, source: "qoder_statusline", status: "ok")
+        }
+        KitL10n.$locale.withValue(Locale(identifier: "zh-Hans")) {
+            #expect(QuotaCopy.planQuotaNote(QuotaCopy.displayAccount(acct("qoder", "not_included"), now: at)) == "当前套餐不含套餐额度")
+        }
+        KitL10n.$locale.withValue(Locale(identifier: "en")) {
+            #expect(QuotaCopy.planQuotaNote(QuotaCopy.displayAccount(acct("qoder", "not_included"), now: at)) == "Your plan doesn't include plan credits")
+        }
+        #expect(QuotaCopy.planQuotaNote(acct("qoder", "unknown")) == nil)
+        #expect(QuotaCopy.planQuotaNote(acct("qoder", nil)) == nil)
+        #expect(QuotaCopy.planQuotaNote(acct("claude", "not_included")) == nil)
+    }
 }
 
 // F4：旧快照上的离线 / 刷新失败 / 过期说明，数值保留、采集时间不变；跨过重置时刻要变成过期（固定快照 + 注入的 now）。
