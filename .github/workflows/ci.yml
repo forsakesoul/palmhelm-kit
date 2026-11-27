@@ -9,15 +9,17 @@ permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   test:
     name: Swift build + test (macOS)
-    # 公开仓库：GitHub 托管的 macOS runner 对公开仓库免费且无限量，
-    # 不需要（也不应该）把自己的机器暴露给公开仓库的 fork PR。
-    runs-on: macos-latest
+    # 公开仓库，但本包要求 Xcode 27（托管 macos-latest 是 Xcode 26.6，测试会触发
+    # Swift 区域隔离检查器的编译器崩溃）。所以跑在本机自托管 macOS runner 上，
+    # 同时守住「fork PR 不上本机」这条线：来自 fork 的 PR 直接跳过本 job，不分配 runner。
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, macos, arm64, xcode, swift]
     steps:
       - uses: actions/checkout@v7
       - name: swift build
