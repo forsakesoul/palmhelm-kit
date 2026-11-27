@@ -62,6 +62,7 @@ public struct PalmhelmMarkdownPageText: View {
 }
 
 struct PreparedBlocksView: View {
+    /// 表格单元格的适读宽度（pt）：超过则换行，整表仍横向滚动；防止连续长 URL 或长说明撑出很宽的一列。
     let blocks: [PreparedMarkdown.Block]
     let codeBackground: Color
     var trimsCodeTail = false
@@ -100,17 +101,13 @@ struct PreparedBlocksView: View {
             VStack(alignment: .leading, spacing: 2) { ForEach(Array(items.enumerated()), id: \.offset) { i, it in HStack(alignment: .top, spacing: 6) { Text("\(start + i).").font(.system(.body, design: .monospaced)); Text(it).textSelection(.enabled) } } }
         case .quote(let s):
             HStack(spacing: 8) { RoundedRectangle(cornerRadius: 1).fill(Color.secondary.opacity(0.5)).frame(width: 3); Text(s).foregroundStyle(.secondary).textSelection(.enabled) }
-        case .table(let header, let rows):
-            // 宽表横向滚动而不是挤压列宽：列数不固定，窄屏上挤压会让单元格逐字断行
+        case .table(let header, let rows, let alignments):
+            // 宽表横向滚动而不是挤压列宽：列数不固定，窄屏上挤压会让单元格逐字断行。列对齐随分隔行的冒号；表头是读屏的标题。
             ScrollView(.horizontal, showsIndicators: false) {
-                Grid(alignment: .leading, horizontalSpacing: 14, verticalSpacing: 6) {
-                    GridRow { ForEach(Array(header.enumerated()), id: \.offset) { _, h in Text(h).font(.body.weight(.semibold)).textSelection(.enabled) } }
-                    Divider().gridCellColumns(header.count)
-                    ForEach(Array(rows.enumerated()), id: \.offset) { _, r in
-                        GridRow { ForEach(Array(r.enumerated()), id: \.offset) { _, c in Text(c).textSelection(.enabled) } }
-                    }
-                }
+                MarkdownTableGrid(header: header, rows: rows, alignments: alignments)
             }
+        case .rule:
+            Divider()
         case .paragraph(let s):
             Text(s).textSelection(.enabled)
         }
@@ -143,6 +140,84 @@ private struct FadeOpacity: @preconcurrency Animatable, ViewModifier {
         let _ = { if opacity > 0.001 && opacity < 0.999 { MarkdownBlockRevealProbe.recordIntermediate() } }()
         #endif
         content.opacity(opacity)
+    }
+}
+
+/// 表格列对齐：分隔行的冒号同时决定三处取值。Grid 的列方向、单元格 frame 的对齐、多行文字的对齐必须一致；
+/// 只设列方向时，frame 仍按左对齐，同列有长格把列撑满时短格会靠左（#156 h30a3）。无冒号或越界按左对齐。
+struct TableCellAlignment: Equatable {
+    let column: HorizontalAlignment
+    let frame: Alignment
+    let text: TextAlignment
+}
+
+func tableCellAlignment(_ alignments: [MarkdownTableAlignment], _ index: Int) -> TableCellAlignment {
+    let alignment = index < alignments.count ? alignments[index] : .unspecified
+    switch alignment {
+    case .unspecified, .left: return TableCellAlignment(column: .leading, frame: .leading, text: .leading)
+    case .center: return TableCellAlignment(column: .center, frame: .center, text: .center)
+    case .right: return TableCellAlignment(column: .trailing, frame: .trailing, text: .trailing)
+    }
+}
+/// 表格的 Grid 本体（不含横向 ScrollView）：生产表格与离屏渲染测试共用，修饰顺序只在这里定义。
+struct MarkdownTableGrid: View {
+    /// 单元格文字宽度的上限（pt）：超过的长格按这个宽度换行，换行后的完整高度参与测量。
+    static let cellMaxWidth: CGFloat = 280
+
+    let header: [AttributedString]
+    let rows: [[AttributedString]]
+    let alignments: [MarkdownTableAlignment]
+
+    var body: some View {
+        Grid(alignment: .leading, horizontalSpacing: 14, verticalSpacing: 6) {
+            GridRow {
+                ForEach(Array(header.enumerated()), id: \.offset) { i, h in
+                    cell(h, column: i, font: .body.weight(.semibold)).accessibilityAddTraits(.isHeader)
+                }
+            }
+            Divider().gridCellColumns(header.count)
+            ForEach(Array(rows.enumerated()), id: \.offset) { _, r in
+                GridRow {
+                    ForEach(Array(r.enumerated()), id: \.offset) { i, c in cell(c, column: i, font: nil) }
+                }
+            }
+        }
+    }
+
+    private func cell(_ text: AttributedString, column i: Int, font: Font?) -> some View {
+        let a = tableCellAlignment(alignments, i)
+        return BoundedWidthCell(cap: Self.cellMaxWidth, alignment: a.frame) {
+            Text(text).font(font).multilineTextAlignment(a.text).textSelection(.enabled)
+        }
+        .gridColumnAlignment(a.column)
+    }
+}
+
+/// 单子视图的表格单元格：测量时宽度提议以 cap 为上限（提议为无限宽时取 cap），高度按该宽度下的完整换行高度给出；
+/// 摆放时用同一个宽度，并按列对齐在 bounds 内定位。替代 fixedSize 与 frame(maxWidth:)，二者不叠加使用。
+struct BoundedWidthCell: Layout {
+    let cap: CGFloat
+    let alignment: Alignment
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        guard let child = subviews.first else { return .zero }
+        let ideal = child.sizeThatFits(.unspecified).width
+        let width = min(ideal, proposal.width ?? cap, cap)
+        return child.sizeThatFits(ProposedViewSize(width: width, height: nil))
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        guard let child = subviews.first else { return }
+        let ideal = child.sizeThatFits(.unspecified).width
+        let width = min(ideal, bounds.width, cap)
+        let size = child.sizeThatFits(ProposedViewSize(width: width, height: nil))
+        let x: CGFloat
+        switch alignment.horizontal {
+        case .trailing: x = bounds.maxX - size.width
+        case .center: x = bounds.midX - size.width / 2
+        default: x = bounds.minX
+        }
+        child.place(at: CGPoint(x: x, y: bounds.minY), anchor: .topLeading, proposal: ProposedViewSize(width: width, height: nil))
     }
 }
 #endif

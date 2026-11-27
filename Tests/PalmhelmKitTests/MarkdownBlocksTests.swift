@@ -37,22 +37,24 @@ import Testing
     }
 
     @Test func tableNeedsSeparatorWithSameColumnCount() {
-        #expect(MarkdownBlock.parse("| a | b |\n| 1 | 2 |") == [.paragraph("| a | b |\n| 1 | 2 |")])
-        #expect(MarkdownBlock.parse("| a | b |\n|---|---|---|") == [.paragraph("| a | b |\n|---|---|---|")])
-        #expect(MarkdownBlock.parse("a | b\n--|--") == [.paragraph("a | b\n--|--")]) // 无外侧管道不成表
+        #expect(MarkdownBlock.parse("| a | b |\n| 1 | 2 |") == [.paragraph("| a | b |\n| 1 | 2 |")]) // 第二行不是分隔行
+        #expect(MarkdownBlock.parse("| a | b |\n|---|---|---|") == [.paragraph("| a | b |\n|---|---|---|")]) // 表头与分隔行列数不符：整段原文
+        #expect(MarkdownBlock.parse("a | b\n--|--") == [.table(header: ["a", "b"], rows: [])]) // 外侧管道可选
     }
 
-    @Test func escapedPipeIsLiteralAndPadsOrTruncatesRows() {
+    @Test func escapedPipeIsLiteralAndPadsRowsButEndsOnExtraCells() {
+        // 缺格补空；格数多于表头时表格在该行之前结束，该行按原文显示（不静默丢格）
         let md = "| a \\| b | c |\n|---|---|\n| 1 |\n| 1 | 2 | 3 |"
-        #expect(MarkdownBlock.parse(md) == [.table(header: ["a | b", "c"], rows: [["1", ""], ["1", "2"]])])
+        #expect(MarkdownBlock.parse(md) == [.table(header: ["a | b", "c"], rows: [["1", ""]]), .paragraph("| 1 | 2 | 3 |")])
     }
 
-    @Test func missingRightPipeIsNotATable() {
-        // 表头或分隔行缺右侧管道：整段回退段落
-        #expect(MarkdownBlock.parse("| a | b\n|---|---|\n| 1 | 2 |") == [.paragraph("| a | b\n|---|---|\n| 1 | 2 |")])
-        #expect(MarkdownBlock.parse("| a | b |\n|---|---") == [.paragraph("| a | b |\n|---|---")])
-        // 数据行缺右侧管道：表格在它之前结束，该行按段落处理
-        #expect(MarkdownBlock.parse("| a | b |\n|---|---|\n| 1 | 2 |\n| 3 | 4") == [.table(header: ["a", "b"], rows: [["1", "2"]]), .paragraph("| 3 | 4")])
+    @Test func outerPipesAreOptionalAndDataRowsNeedAPipe() {
+        // 外侧管道可有可无，允许混用
+        #expect(MarkdownBlock.parse("| a | b\n|---|---|\n| 1 | 2 |") == [.table(header: ["a", "b"], rows: [["1", "2"]])])
+        #expect(MarkdownBlock.parse("| a | b |\n|---|---") == [.table(header: ["a", "b"], rows: [])]) // 分隔行缺尾部管道，列数相同仍成表
+        #expect(MarkdownBlock.parse("| a | b |\n|---") == [.paragraph("| a | b |\n|---")]) // 分隔行只有一列，与表头不符
+        // 数据行没有未转义管道：表格在它之前结束，该行按段落处理
+        #expect(MarkdownBlock.parse("| a | b |\n|---|---|\n| 1 | 2 |\n只是一句话") == [.table(header: ["a", "b"], rows: [["1", "2"]]), .paragraph("只是一句话")])
     }
 
     @Test func pipesInsideFenceAreNotATable() {
@@ -90,7 +92,8 @@ import Testing
                     case (.bullets(let a), .bullets(let b)): #expect(a == b.map { oldInline($0, q) })
                     case (.numbered(let s1, let a), .numbered(let s2, let b)): #expect(s1 == s2 && a == b.map { oldInline($0, q) })
                     case (.quote(let a), .quote(let b)): #expect(a == oldInline(b, q))
-                    case (.table(let h1, let r1), .table(let h2, let r2)): #expect(h1 == h2.map { oldInline($0, q) } && r1 == r2.map { $0.map { oldInline($0, q) } })
+                    case (.table(let h1, let r1, _), .table(let h2, let r2)): #expect(h1 == h2.map { oldInline($0, q) } && r1 == r2.map { $0.map { oldInline($0, q) } })
+                    case (.rule, .rule): #expect(true)
                     case (.paragraph(let a), .paragraph(let b)): #expect(a == oldInline(b, q))
                     default: Issue.record("块类型不一致：\(p) vs \(s)")
                     }

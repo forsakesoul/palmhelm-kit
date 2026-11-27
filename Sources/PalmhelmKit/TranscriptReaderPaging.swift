@@ -10,6 +10,8 @@ public struct ReaderText: Equatable, Sendable {
     public let text: AttributedString
     public let offset: Int
     public let count: Int
+    /// 表格表头单元格所属列的对齐（仅表头有意义，其余为 unspecified）；分页与渲染共用。
+    var alignment: MarkdownTableAlignment = .unspecified
     public init(_ text: AttributedString, offset: Int) {
         self.text = text; self.offset = offset; self.count = text.characters.count
     }
@@ -25,6 +27,8 @@ public enum ReaderBlock: Equatable, Sendable {
     case numbered(start: Int, [ReaderText])
     case quote(ReaderText)
     case table(header: [ReaderText], rows: [[ReaderText]])
+    /// 顶层分隔线：没有文字，只占一个 Text 叶子（绘制为横线）。
+    case rule
     case paragraph(ReaderText)
 }
 
@@ -112,8 +116,8 @@ public enum TranscriptReaderPaging {
         }
         var flow = Flow()
         var builder = PageBuilder(limit: max(1, pageCharacters), maxLeaves: max(1, pageLeaves))
-        for block in MarkdownBlock.parse(text) {
-            for piece in split(flow.lower(block), limit: builder.limit, maxLeaves: builder.maxLeaves) { builder.place(piece) }
+        for source in MarkdownBlock.parseRanged(text) {
+            for piece in split(flow.lower(source.block, alignments: source.alignments), limit: builder.limit, maxLeaves: builder.maxLeaves) { builder.place(piece) }
         }
         return ReaderDocument(pages: builder.finish(), display: flow.display)
     }
@@ -186,7 +190,7 @@ public enum TranscriptReaderPaging {
         }
         mutating func endLeaf() { display += "\n"; count += 1 }
 
-        mutating func lower(_ b: MarkdownBlock) -> ReaderBlock {
+        mutating func lower(_ b: MarkdownBlock, alignments: [MarkdownTableAlignment] = []) -> ReaderBlock {
             defer { /* 叶子分隔在各分支内按叶子结束加入 */ }
             switch b {
             case .code(let s, let lang):
@@ -199,8 +203,13 @@ public enum TranscriptReaderPaging {
             case .numbered(let n, let items): return .numbered(start: n, items.map { let r = text($0); endLeaf(); return r })
             case .quote(let s): let r = text(s); endLeaf(); return .quote(r)
             case .table(let h, let rows):
-                let header = h.map { let r = text($0); endLeaf(); return r }
+                let header = h.enumerated().map { idx, cell -> ReaderText in
+                    var r = text(cell); endLeaf()
+                    r.alignment = idx < alignments.count ? alignments[idx] : .unspecified
+                    return r
+                }
                 return .table(header: header, rows: rows.map { $0.map { let r = text($0); endLeaf(); return r } })
+            case .rule: return .rule
             case .paragraph(let s): let r = text(s); endLeaf(); return .paragraph(r)
             }
         }
@@ -219,6 +228,7 @@ public enum TranscriptReaderPaging {
         case .table(let header, let rows):
             let cells = header + rows.flatMap { $0 }
             return Cost(characters: cells.reduce(0) { $0 + $1.count }, leaves: cells.count)
+        case .rule: return Cost(characters: 0, leaves: 1)
         }
     }
 
@@ -228,6 +238,7 @@ public enum TranscriptReaderPaging {
         case .heading(_, let t), .quote(let t), .paragraph(let t): return [t.span]
         case .bullets(let items), .numbered(_, let items): return items.map(\.span)
         case .table(let header, let rows): return (header + rows.flatMap { $0 }).map(\.span)
+        case .rule: return []
         }
     }
 
@@ -281,6 +292,7 @@ public enum TranscriptReaderPaging {
             return out
         case .table(let header, let rows):
             return splitTable(header: header, rows: rows, limit: limit, maxLeaves: maxLeaves)
+        case .rule: return [b]
         }
     }
 
@@ -356,10 +368,14 @@ public enum TranscriptReaderPaging {
         let headerCell = max(1, limit / 2 / cols)
         var headerChunks: [[ReaderText]] = header.map { h in
             var o = h.offset
-            return attributedChunks(h.text, limit: headerCell).map { c in defer { o += c.characters.count }; return ReaderText(c, offset: o) }
+            return attributedChunks(h.text, limit: headerCell).map { c in
+                defer { o += c.characters.count }
+                var t = ReaderText(c, offset: o); t.alignment = h.alignment
+                return t
+            }
         }
         let depth = headerChunks.map(\.count).max() ?? 1
-        for i in headerChunks.indices { while headerChunks[i].count < depth { headerChunks[i].append(ReaderText(AttributedString(""), offset: header[i].offset + header[i].count)) } }
+        for i in headerChunks.indices { while headerChunks[i].count < depth { var f = ReaderText(AttributedString(""), offset: header[i].offset + header[i].count); f.alignment = header[i].alignment; headerChunks[i].append(f) } }
         var out: [ReaderBlock] = []
         for k in 0..<(depth - 1) { out.append(.table(header: headerChunks.map { $0[k] }, rows: [])) }
         let finalHeader = headerChunks.map { $0[depth - 1] }
@@ -459,6 +475,7 @@ extension ReaderPage {
                 case .heading(_, let t), .quote(let t), .paragraph(let t): return t.plain
                 case .bullets(let items), .numbered(_, let items): return items.map(\.plain).joined(separator: "\n")
                 case .table(let header, let rows): return ([header] + rows).map { $0.map(\.plain).joined(separator: " ") }.joined(separator: "\n")
+                case .rule: return ""
                 }
             }.joined(separator: "\n")
         }
