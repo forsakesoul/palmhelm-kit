@@ -82,6 +82,7 @@ import Testing
         case .heading(_, let t), .quote(let t), .paragraph(let t): [t.plain]
         case .bullets(let i), .numbered(_, let i): i.map(\.plain)
         case .table(let h, let r): (h + r.flatMap { $0 }).map(\.plain)
+        case .rule: []
         }
     }
 
@@ -95,6 +96,7 @@ import Testing
             case .heading(_, let t), .quote(let t), .paragraph(let t): chars += t.count; leaves += 1
             case .bullets(let items), .numbered(_, let items): chars += items.reduce(0) { $0 + $1.count }; leaves += items.count * 2 // 标记 + 正文
             case .table(let h, let r): let cells = h + r.flatMap { $0 }; chars += cells.reduce(0) { $0 + $1.count }; leaves += cells.count
+            case .rule: leaves += 1 // 分隔线是一个绘制叶子
             }
         }
         return (chars, leaves)

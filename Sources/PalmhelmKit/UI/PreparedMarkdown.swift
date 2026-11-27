@@ -9,7 +9,8 @@ struct PreparedMarkdown {
         case bullets([AttributedString])
         case numbered(start: Int, [AttributedString])
         case quote(AttributedString)
-        case table(header: [AttributedString], rows: [[AttributedString]])
+        case table(header: [AttributedString], rows: [[AttributedString]], alignments: [MarkdownTableAlignment])
+        case rule
         case paragraph(AttributedString)
     }
 
@@ -22,25 +23,27 @@ struct PreparedMarkdown {
     }
 
     init(source: [MarkdownSourceBlock], highlight: String?) {
-        self.init(blocks: source.map(\.block), ranges: source.map { Optional($0.utf8Range) }, highlight: highlight)
+        self.init(blocks: source.map(\.block), ranges: source.map { Optional($0.utf8Range) }, alignments: source.map(\.alignments), highlight: highlight)
     }
 
     /// 源块：行内解析与高亮。
-    init(blocks source: [MarkdownBlock], ranges: [Range<Int>?]? = nil, highlight: String?) {
+    init(blocks source: [MarkdownBlock], ranges: [Range<Int>?]? = nil, alignments: [[MarkdownTableAlignment]] = [], highlight: String?) {
         self.ranges = ranges ?? Array(repeating: nil, count: source.count)
         func inline(_ s: String) -> AttributedString {
             MarkdownDiagnostics.measure(block: false) {
                 SearchText.marking((try? AttributedString(markdown: s, options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace))) ?? AttributedString(s), query: highlight)
             }
         }
-        blocks = source.map { b in
+        blocks = source.enumerated().map { idx, b in
             switch b {
             case .code(let s, let lang): .code(AttributedString(s), lang: lang)
             case .heading(let level, let t): .heading(level: level, inline(t))
             case .bullets(let items): .bullets(items.map(inline))
             case .numbered(let start, let items): .numbered(start: start, items.map(inline))
             case .quote(let s): .quote(inline(s))
-            case .table(let header, let rows): .table(header: header.map(inline), rows: rows.map { $0.map(inline) })
+            case .table(let header, let rows):
+                .table(header: header.map(inline), rows: rows.map { $0.map(inline) }, alignments: idx < alignments.count ? alignments[idx] : Array(repeating: .unspecified, count: header.count))
+            case .rule: .rule
             case .paragraph(let s): .paragraph(inline(s))
             }
         }
@@ -57,7 +60,8 @@ struct PreparedMarkdown {
             case .bullets(let items): .bullets(items.map(mark))
             case .numbered(let start, let items): .numbered(start: start, items.map(mark))
             case .quote(let t): .quote(mark(t))
-            case .table(let header, let rows): .table(header: header.map(mark), rows: rows.map { $0.map(mark) })
+            case .table(let header, let rows): .table(header: header.map(mark), rows: rows.map { $0.map(mark) }, alignments: header.map(\.alignment))
+            case .rule: .rule
             case .paragraph(let t): .paragraph(mark(t))
             }
         }
