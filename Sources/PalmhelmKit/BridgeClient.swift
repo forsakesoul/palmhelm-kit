@@ -131,6 +131,56 @@ public actor BridgeClient {
         guard (200..<300).contains(status) else { throw BridgeError.http(status: status) }
     }
 
+    /// 实时活动远程更新（D10）：GET 只返回当前槽版本。Bridge 旧版本返回 404 → `.unsupported`。
+    public func liveActivitySlot() async throws -> LiveActivityOutcome {
+        try await liveActivityCall("GET", body: nil)
+    }
+
+    /// 登记或更新（PUT）。请求体由 `LiveActivityWire.putBody` 校验并生成，发送前的错误直接抛出，不发请求。
+    public func putLiveActivity(_ put: LiveActivityPut) async throws -> LiveActivityOutcome {
+        try await liveActivityCall("PUT", body: try LiveActivityWire.putBody(put))
+    }
+
+    /// 关闭（DELETE）。空槽上也会推进槽版本。
+    public func deleteLiveActivity(_ delete: LiveActivityDelete) async throws -> LiveActivityOutcome {
+        try await liveActivityCall("DELETE", body: try LiveActivityWire.deleteBody(delete))
+    }
+
+    private func liveActivityCall(_ method: String, body: Data?) async throws -> LiveActivityOutcome {
+        let path = BridgeAPI.Path.devicesSelf + "/live-activity"
+        let status: Int, data: Data
+        do {
+            (status, data) = try await messageRequest(method, path, body: body)
+        } catch is URLError {
+            return .transient // 超时、断网：暂时失败，由调用方退避重试
+        }
+        return try Self.liveActivityOutcome(status: status, body: data)
+    }
+
+    /// 状态码归类（纯函数，便于测试）。2xx 必须带 slotVer；解码失败抛出，不当作成功。
+    static func liveActivityOutcome(status: Int, body: Data) throws -> LiveActivityOutcome {
+        struct SlotBody: Decodable { var slotVer: String? }
+        switch status {
+        case 200..<300:
+            guard let slot = try? JSONDecoder().decode(SlotBody.self, from: body), let ver = slot.slotVer else { throw BridgeError.decoding }
+            return .ok(slotVer: ver)
+        case 409:
+            struct Conflict: Decodable { var error: String?; var slotVer: String? }
+            if let c = try? JSONDecoder().decode(Conflict.self, from: body), c.error == "slot_conflict", let ver = c.slotVer {
+                return .slotConflict(slotVer: ver)
+            }
+            return .rejected(status: 409)
+        case 404:
+            return .unsupported
+        case 500..<600:
+            return .transient
+        case 400..<500:
+            return .rejected(status: status)
+        default:
+            return .transient
+        }
+    }
+
     public func health() async throws -> BridgeHealth { try await get(BridgeAPI.Path.health) }
 
     public func state() async throws -> BridgeState { try await get(BridgeAPI.Path.state) }

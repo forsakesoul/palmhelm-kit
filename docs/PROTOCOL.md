@@ -255,6 +255,9 @@ All routes are authenticated and act on the current device; they do not grant pe
 | DELETE `/v1/devices/self` | `{}` | `{removed:true}`; token stops authenticating, stream closes |
 | PUT `/v1/devices/self/push` | `{token:string,environment:"development"|"production",localizationVersion?:integer}` | `{registered:true}` |
 | DELETE `/v1/devices/self/push` | no registration secret | `{removed:true}` |
+| GET `/v1/devices/self/live-activity` | none | `{slotVer:string}`; 404 means the Bridge has no live-activity sender, so the App keeps local updates |
+| PUT `/v1/devices/self/live-activity` | `{activityId,token,environment,rev,ifSlot,state,items:[{kind,key}],rowRefs:[{kind,key}]}`; `state` is the App-encoded ContentState object, embedded verbatim | `{slotVer}`; `409 {error:"slot_conflict",slotVer}` for a stale slot; other 409 and 4xx are rejections; 503 and 5xx are transient |
+| DELETE `/v1/devices/self/live-activity` | `{activityId,token,environment,rev,ifSlot}` | `{slotVer}`; an empty slot still advances the version |
 
 APNs token is 64 hexadecimal characters (Kit accepts lowercase; server normalizes case). This token is distinct from the device bearer token. localizationVersion=1 declares support for localized push keys; omit it for the legacy payload behavior. Registration success is not delivery confirmation. Push availability depends on the Bridge configuration; a push notification is a prompt to refresh authenticated state, not authority to decide an approval or resend an unknown command.
 
